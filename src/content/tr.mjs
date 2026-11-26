@@ -1,5 +1,5 @@
 // Türkçe sayfalar. Eski sitedeki adresler (/tuerkce/...) korunmuştur.
-import { rows, split, statement, chapters, form, fees, PHONE, FAX, EMAIL, MAP } from '../parts.mjs';
+import { rows, split, cardGrid, timeline, badges, statement, chapters, form, fees, PHONE, FAX, EMAIL, MAP } from '../parts.mjs';
 
 const BASE = 'tuerkce/';
 const LAWYER = BASE + 'alman-hukukunda-avukat-dr-kenan-ertunc-m/';
@@ -77,27 +77,28 @@ export function pages() {
     desc: 'Rosenheim’da hukuk bürosu: yabancılar ve iltica hukuku, aile, iş, ceza ve trafik hukuku. Türkçe, Almanca, İngilizce ve İtalyanca danışmanlık.',
     alternates: alt('', BASE, 'english/'),
     langLinks: { de: '', en: 'english/' },
-    moments: ['word-highlight', 'pinned-chapters'],
+    moments: ['word-highlight'],
     hero: {
       photo: 'pen', pos: '50% 50%',
       h1: 'Rosenheim’da göç hukuku avukatı',
       lead: 'Dr. Kenan Ertunc M.A., Almanya’da göç hukuku uzman avukatı (Fachanwalt für Migrationsrecht). Aile, iş, ceza ve trafik hukukunda da sizi temsil eder. Danışmanlık Türkçe de yapılır.',
       buttons: [{ href: CONTACT + '#talep', label: 'Randevu talep edin' }, { href: '#alanlar', label: 'Hukuk alanlarını görün' }],
     },
-    close: { h2: 'Rosenheim’da ilk görüşme için randevu alın', line: 'İlk görüşme ücretsizdir: telefonla, e-postayla ya da büroda.', photo: 'ludwig', pos: '50% 62%' },
+    close: { h2: 'Rosenheim’da ilk görüşme için randevu alın', line: 'İlk görüşme ücretsizdir: telefonla, e-postayla ya da büroda.' },
   });
   home.sections = [
     split(home, {
-      id: 'alanlar', photo: 'shelves', pos: '45% 80%',
+      id: 'alanlar',
       h2: 'Büronun hukuk alanları',
       lead: 'Uzmanlık alanı yabancılar ve iltica hukukudur. Bireyler ve şirketler dört alanda daha danışmanlık ve temsil hizmeti alır.',
-      body: rows([
+      body: cardGrid([
         { name: 'Yabancılar ve iltica hukuku', line: 'Oturum izinleri, vatandaşlığa geçiş, aile birleşimi, iltica süreci ve kararlara karşı dava.', value: 'Uzman avukat' },
         { name: 'Aile hukuku', line: 'Ayrılık, boşanma, nafaka, velayet ve görüşme hakkı.' },
         { name: 'İş hukuku', line: 'İşten çıkarma, tazminat, iş sözleşmesi ve bonservis.' },
         { name: 'Ceza hukuku', line: 'Soruşturma ve ceza davasında savunma.' },
         { name: 'Trafik hukuku', line: 'Kaza sonrası tazminat, para cezası ve ehliyet.' },
-      ]) + `\n        <p class="split__more"><a class="link" href="${home.p}${AREAS}">Hukuk alanlarını ayrıntılı okuyun</a></p>`,
+      ], { icons: ['globe', 'users', 'briefcase', 'gavel', 'car'], feature: true }),
+      aside: `<p class="split__more"><a class="link" href="${home.p}${AREAS}">Hukuk alanlarını ayrıntılı okuyun</a></p>`,
     }),
     statement({
       id: 'diller', label: 'Diller',
@@ -107,24 +108,26 @@ export function pages() {
     chapters(home, {
       id: 'surec', h2: 'Vekâlet süreci nasıl işler',
       steps: [
-        { title: 'İlk görüşme ücretsiz', photo: 'penwood', text: 'Konunuzu telefonla, e-postayla ya da büroda anlatırsınız. Sürecin nasıl ilerleyeceğini ve tahmini masrafları öğrenirsiniz.' },
-        { title: 'Belgelerin incelenmesi', photo: 'volumes', text: 'Kararlar, sözleşmeler ve yazışmalar incelenir. Durumunuz hakkında bir değerlendirme ve izlenecek yol için bir öneri alırsınız.' },
-        { title: 'Makamlar ve mahkemeler önünde temsil', photo: 'justiz', text: 'Büro; makamlar, karşı taraf ve sigortalarla yazışmaları yürütür ve sizi mahkemede temsil eder.' },
+        { title: 'İlk görüşme ücretsiz', text: 'Konunuzu telefonla, e-postayla ya da büroda anlatırsınız. Sürecin nasıl ilerleyeceğini ve tahmini masrafları öğrenirsiniz.' },
+        { title: 'Belgelerin incelenmesi', text: 'Kararlar, sözleşmeler ve yazışmalar incelenir. Durumunuz hakkında bir değerlendirme ve izlenecek yol için bir öneri alırsınız.' },
+        { title: 'Makamlar ve mahkemeler önünde temsil', text: 'Büro; makamlar, karşı taraf ve sigortalarla yazışmaları yürütür ve sizi mahkemede temsil eder.' },
       ],
     }),
     split(home, {
-      id: 'avukat', photo: 'harvard', pos: '50% 50%',
+      id: 'avukat',
       h2: 'Dr. Kenan Ertunc M.A.',
       lead: 'Göç hukuku uzman avukatı ve Münih Barosu üyesi.',
-      body: rows([
+      body: timeline([
         { name: 'Eğitim', line: 'Bremen, Saarbrücken ve Milano’da hukuk, çalışma bilimi ve Avrupa çalışmaları.' },
         { name: 'Doktora', line: 'Milano Üniversitesi, Graduate School for Social and Political Science.' },
         { name: 'Araştırma', line: 'Warwick Business School ve Cambridge Üniversitesi’nde misafir araştırmacı.' },
         { name: 'Meslek', line: 'Münih’te uluslararası bir hukuk bürosunda avukatlık.' },
-      ]) + `\n        <p class="split__more"><a class="link" href="${home.p}${LAWYER}">Özgeçmişin tamamını okuyun</a></p>`,
+      ]),
+      aside: `${badges(["Göç hukuku uzman avukatı","Milano’da doktora","Dört dilde danışmanlık"])}
+        <p class="split__more"><a class="link" href="${home.p}${LAWYER}">Özgeçmişin tamamını okuyun</a></p>`,
     }),
     fees(home, {
-      id: 'ucretler', photo: 'intl', pos: '50% 45%',
+      id: 'ucretler',
       h2: 'Ücretler ve faturalama',
       lead: 'İlk görüşme ücretsizdir. Sonrasında nasıl faturalanacağı, vekâlet başlamadan önce belirlenir.',
       link: { href: CONTACT + '#talep', label: 'Masrafları görüşmek için yazın' },
@@ -143,21 +146,21 @@ export function pages() {
     desc: 'Dr. Kenan Ertunc’un özgeçmişi: Bremen, Saarbrücken ve Milano’da eğitim, Milano’da doktora, Warwick ve Cambridge’de araştırma, Münih ve Rosenheim’da avukatlık.',
     alternates: alt('rechtsanwalt/', LAWYER, 'english/dr-kenan-ertunc-m/'),
     langLinks: { de: 'rechtsanwalt/', en: 'english/dr-kenan-ertunc-m/' },
-    moments: ['picture-develops'],
+    moments: [],
     hero: {
       photo: 'harvard', pos: '50% 50%',
       h1: 'Avukat Dr. Kenan Ertunc M.A.',
       lead: 'Rosenheim’da göç hukuku uzman avukatı. Almanya ve İtalya’da eğitim ve doktora, Warwick ve Cambridge’de araştırma, Münih’te uluslararası bir hukuk bürosunda deneyim.',
       buttons: [{ href: CONTACT + '#talep', label: 'Randevu talep edin' }, { href: '#ozgecmis', label: 'Özgeçmişi görün' }],
     },
-    close: { h2: 'Dr. Ertunc ile görüşme talep edin', line: 'İlk görüşme ücretsizdir: telefonla, e-postayla ya da büroda.', photo: 'mittertor', pos: '50% 55%' },
+    close: { h2: 'Dr. Ertunc ile görüşme talep edin', line: 'İlk görüşme ücretsizdir: telefonla, e-postayla ya da büroda.' },
   });
   lawyer.sections = [
     split(lawyer, {
-      id: 'ozgecmis', photo: 'lesesaal', develop: true, pos: '50% 50%', cls: 'ph-short',
+      id: 'ozgecmis',
       h2: 'Özgeçmiş',
       lead: 'Dört ülkede eğitim, araştırma ve meslek deneyimi.',
-      body: rows([
+      body: timeline([
         { name: 'Eğitim', line: 'Bremen, Saarbrücken ve Milano’da hukuk, çalışma bilimi ve Avrupa çalışmaları.' },
         { name: 'Staj (Referendariat)', line: 'Saarland Yüksek Eyalet Mahkemesi, Saarbrücken.' },
         { name: 'Doktora', line: 'Milano Üniversitesi, Graduate School for Social and Political Science.' },
@@ -167,14 +170,14 @@ export function pages() {
       ]),
     }),
     split(lawyer, {
-      id: 'yayinlar', photo: 'intl', pos: '40% 50%',
+      id: 'yayinlar',
       h2: 'Yayınlar ve üyelikler',
       lead: 'Göç hukuku uzmanlık eğitimi (Fachanwalt für Migrationsrecht). Türkçe, Almanca, İngilizce ve İtalyanca danışmanlık; Kürtçe ve Arapça için tercüman.',
-      body: rows([
+      body: cardGrid([
         { name: '<a class="link" href="https://trs.sagepub.com/content/19/2/281.short" rel="noopener" lang="en">Fundamental Social Rights in the European Multilevel Governance System</a>', line: 'Transfer: European Review of Labour and Research, 2013, s. 281.' },
         { name: '<a class="link" href="https://air.unimi.it/handle/2434/233514" rel="noopener" lang="en">The Legal Implications of the Social Market Economy on the European Economic Constitution</a>', line: 'Doktora tezi, Milano Üniversitesi, 2014.' },
         { name: 'Üyelikler', line: 'Münih Barosu (Rechtsanwaltskammer München), Alman Avukatlar Birliği (Deutscher Anwaltverein).' },
-      ]),
+      ], { icons: ['book', 'book', 'award'], cols: 1 }),
     }),
   ];
 
@@ -192,20 +195,20 @@ export function pages() {
       lead: 'Yabancılar ve iltica hukukunda uzman avukat desteği; ayrıca aile, iş, ceza ve trafik hukuku. Rosenheim’da bireyler ve şirketler için.',
       buttons: [{ href: CONTACT + '#talep', label: 'Randevu talep edin' }, { href: '#goc-hukuku', label: 'Göç hukukunu görün' }],
     },
-    close: { h2: 'Konunuzu büroyla görüşün', line: 'İlk görüşme ücretsizdir: telefonla, e-postayla ya da büroda.', photo: 'ludwig', pos: '50% 62%' },
+    close: { h2: 'Konunuzu büroyla görüşün', line: 'İlk görüşme ücretsizdir: telefonla, e-postayla ya da büroda.' },
   });
   areas.sections = [
     split(areas, {
-      id: 'goc-hukuku', photo: 'justiz', pos: '50% 55%',
+      id: 'goc-hukuku',
       h2: 'Yabancılar ve iltica hukuku',
       lead: 'Dr. Ertunc, göç hukuku uzman avukatı unvanını taşır. Büro, özellikle şu konularda danışmanlık ve temsil hizmeti verir:',
-      body: rows([
+      body: cardGrid([
         { name: 'Oturum', line: 'Oturum izni, süresiz oturum izni, uzatma ve daimi oturum.' },
         { name: 'Vatandaşlık', line: 'Başvuru, şartlar ve ret kararına itiraz.' },
         { name: 'Aile birleşimi ve vize', line: 'Eş ve çocukların yanınıza gelmesi, vize süreci.' },
         { name: 'İltica süreci', line: 'Mülakat, karar ve idare mahkemesinde dava.' },
         { name: 'Sınır dışı etme', line: 'Acil hukuki koruma ve yabancılar dairesi karşısında temsil.' },
-      ]),
+      ], { icons: ['idcard', 'landmark', 'send', 'shield', 'alert'] }),
     }),
     statement({
       id: 'baglanti', label: 'Bağlantılar',
@@ -213,15 +216,15 @@ export function pages() {
       after: '<ul class="lang-row lang-row--3"><li lang="de">§ 54 AufenthG<small>Mahkûmiyet sonrası sınır dışı etme menfaati</small></li><li lang="de">§ 31 AufenthG<small>Ayrılıktan sonra eşin bağımsız oturum hakkı</small></li><li lang="de">§ 18 ff. AufenthG<small>Çalışma amaçlı oturum</small></li></ul>',
     }),
     split(areas, {
-      id: 'diger', photo: 'volumes', pos: '50% 50%',
+      id: 'diger',
       h2: 'Aile, iş, ceza ve trafik hukuku',
       lead: 'Mahkeme dışında ve mahkemede danışmanlık ve temsil.',
-      body: rows([
+      body: cardGrid([
         { id: 'aile-hukuku', name: 'Aile hukuku', line: 'Ayrılık ve boşanma, çocuk ve eş nafakası, velayet ve görüşme hakkı, mal paylaşımı.' },
         { id: 'is-hukuku', name: 'İş hukuku', line: 'İşe iade davası, tazminat, iş sözleşmesi ve bonservis; çalışanlar ve işverenler için.' },
         { id: 'ceza-hukuku', name: 'Ceza hukuku', line: 'Soruşturmada, ceza emrinde (Strafbefehl) ve duruşmada savunma.' },
         { id: 'trafik-hukuku', name: 'Trafik hukuku', line: 'Kaza tazminatı, para cezası süreci, sürüş yasağı ve ehliyet.' },
-      ]),
+      ], { icons: ['users', 'briefcase', 'gavel', 'car'] }),
     }),
   ];
 
@@ -239,7 +242,7 @@ export function pages() {
       lead: 'Adlzreiterstraße 2, 83022 Rosenheim. Arayın, e-posta yazın ya da talebinizi formla gönderin. Türkçe yazabilirsiniz.',
       buttons: [{ href: '#talep', label: 'Randevu talep edin' }, { href: PHONE.href, label: `${PHONE.label} arayın` }],
     },
-    close: { h2: 'Doğrudan aramayı mı tercih edersiniz', line: `Telefon ${PHONE.label}, faks ${FAX}.`, photo: 'shelves', pos: '45% 50%' },
+    close: { h2: 'Doğrudan aramayı mı tercih edersiniz', line: `Telefon ${PHONE.label}, faks ${FAX}.` },
   });
   contact.sections = [
     `  <section class="section" id="talep" style="--hm: 2" aria-labelledby="talep-h">

@@ -44,16 +44,16 @@
 }
 </style>
 <link rel="stylesheet" href="assets/site.css">
-<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver'in window)document.documentElement.classList.add('rv');document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
 <script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
 <link rel="modulepreload" href="assets/moments/moments.js"><link rel="modulepreload" href="assets/moments/lib.js">
-<link rel="modulepreload" href="assets/moments/word-highlight/moment.js"><link rel="modulepreload" href="assets/moments/pinned-chapters/moment.js">
+<link rel="modulepreload" href="assets/moments/word-highlight/moment.js">
 </head>
 <body>
 <!-- type: service (Kanzlei, site-kind other)
-     deal: hero film (no film: the poster is a stand-in photograph, no play control), nav nav-split, close close-photo,
+     deal: hero film (no film: the poster is a stand-in photograph, no play control), nav nav-split, close close-panel (no photograph),
      footer footer-columns, rhythm space, buttons tonal, mark stack, palette oxblood-grey, type instrument-serif
-     moments: word-highlight, pinned-chapters
+     moments: word-highlight
      Built by src/build.mjs: edit the content in src/content/*.mjs and run "node src/build.mjs". -->
 <header class="nav nav--split">
   <div class="wrap nav__bar">
@@ -115,23 +115,40 @@
     </div></div>
   </section>
 
-  <section class="section tab2" id="rechtsgebiete" style=" --hm: 2" aria-labelledby="rechtsgebiete-h">
-    <div class="wrap grid grid--top split">
-      <div class="span-5 split__text">
+  <section class="section section--ui" id="rechtsgebiete" aria-labelledby="rechtsgebiete-h">
+    <div class="wrap grid grid--top ui-split">
+      <div class="span-4 ui-split__head">
         <div class="section-head">
           <h2 id="rechtsgebiete-h">Rechtsgebiete der Kanzlei</h2>
           <p>Schwerpunkt ist das Ausländer- und Asylrecht. Privatpersonen und Unternehmen werden außerdem in vier weiteren Gebieten beraten und vertreten.</p>
         </div>
-        <ul class="rows">
-            <li><span class="rows__name">Ausländer- und Asylrecht</span><p>Aufenthaltstitel, Einbürgerung, Familiennachzug, Asylverfahren und Klagen gegen Bescheide.</p><span class="rows__value">Fachanwalt</span></li>
-            <li><span class="rows__name">Familienrecht</span><p>Trennung, Scheidung, Unterhalt, Sorge- und Umgangsrecht.</p></li>
-            <li><span class="rows__name">Arbeitsrecht</span><p>Kündigung, Abfindung, Arbeitsvertrag und Zeugnis.</p></li>
-            <li><span class="rows__name">Strafrecht</span><p>Verteidigung im Ermittlungs- und Strafverfahren.</p></li>
-            <li><span class="rows__name">Verkehrsrecht</span><p>Unfallregulierung, Bußgeld und Führerschein.</p></li>
-          </ul>
         <p class="split__more"><a class="link" href="rechtsgebiete/">Alle Rechtsgebiete im Detail lesen</a></p>
       </div>
-      <div class="frame frame--photo split__media span-6 start-7"><img class="frame__img" src="assets/img/photo-f201613328-1024.webp" srcset="assets/img/photo-f201613328-640.webp 640w, assets/img/photo-f201613328-1024.webp 1024w, assets/img/photo-f201613328-1600.webp 1600w, assets/img/photo-f201613328-2400.webp 2400w" sizes="(max-width: 639px) 800px, (max-width: 1023px) 1200px, 1060px" width="1024" height="683" alt="Gesetzessammlungen und Entscheidungsbände in einem Bücherregal" loading="lazy" decoding="async" style="--pos: 45% 80%; object-position: 45% 80%" data-source="stand-in" data-subject="law reports on a bookshelf"></div>
+      <div class="span-8 start-5 ui-split__body">
+        <ul class="cards cards--2" data-reveal>
+            <li class="card-item card-item--feature">
+              <span class="card-item__icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19"/><path d="M12 2.5a14.5 14.5 0 0 1 0 19 14.5 14.5 0 0 1 0-19z"/></svg></span>
+              <div class="card-item__body"><h3 class="card-item__name">Ausländer- und Asylrecht</h3><p>Aufenthaltstitel, Einbürgerung, Familiennachzug, Asylverfahren und Klagen gegen Bescheide.</p></div>
+              <span class="badge">Fachanwalt</span>
+            </li>
+            <li class="card-item">
+              <span class="card-item__icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20v-1.5a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4V20"/><circle cx="9" cy="7" r="3.5"/><path d="M22 20v-1.5a4 4 0 0 0-3-3.85"/><path d="M15.5 3.6a3.5 3.5 0 0 1 0 6.8"/></svg></span>
+              <div class="card-item__body"><h3 class="card-item__name">Familienrecht</h3><p>Trennung, Scheidung, Unterhalt, Sorge- und Umgangsrecht.</p></div>
+            </li>
+            <li class="card-item">
+              <span class="card-item__icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="7" width="19" height="13" rx="2"/><path d="M8.5 7V5a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v2"/><path d="M2.5 12.5h19"/></svg></span>
+              <div class="card-item__body"><h3 class="card-item__name">Arbeitsrecht</h3><p>Kündigung, Abfindung, Arbeitsvertrag und Zeugnis.</p></div>
+            </li>
+            <li class="card-item">
+              <span class="card-item__icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m14 13-7.5 7.5a2.12 2.12 0 0 1-3-3L11 10"/><path d="m16 16 6-6"/><path d="m8 8 6-6"/><path d="m9 7 8 8"/><path d="m21 11-8-8"/></svg></span>
+              <div class="card-item__body"><h3 class="card-item__name">Strafrecht</h3><p>Verteidigung im Ermittlungs- und Strafverfahren.</p></div>
+            </li>
+            <li class="card-item">
+              <span class="card-item__icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16.5V12l2.3-5h11.4L20 12v4.5z"/><path d="M4 12h16"/><circle cx="7.5" cy="16.5" r="1.8"/><circle cx="16.5" cy="16.5" r="1.8"/></svg></span>
+              <div class="card-item__body"><h3 class="card-item__name">Verkehrsrecht</h3><p>Unfallregulierung, Bußgeld und Führerschein.</p></div>
+            </li>
+          </ul>
+      </div>
     </div>
   </section>
 
@@ -142,63 +159,66 @@
     </div>
   </section>
 
-  <section class="section" id="ablauf" style="--h: 2; --hm: 2" data-moment="pinned-chapters" aria-labelledby="ablauf-h">
-    <div class="wrap mo-pc__grid">
-      <div class="mo-pc__text">
+  <section class="section section--ui" id="ablauf" aria-labelledby="ablauf-h">
+    <div class="wrap">
+      <div class="ui-head"><div class="section-head">
         <h2 id="ablauf-h">So läuft Ihr Mandat ab</h2>
-        <ol class="mo-pc__steps">
-          <li class="mo-pc__step">
+      </div></div>
+      <div class="steps" data-steps>
+        <div class="steps__rail" aria-hidden="true"><span class="steps__fill"></span></div>
+        <ol class="steps__list">
+          <li class="steps__item">
+            <span class="steps__num" aria-hidden="true">1</span>
             <h3>Erster Kontakt, kostenfrei</h3>
             <p>Sie schildern Ihr Anliegen am Telefon, per E-Mail oder in der Kanzlei. Sie erfahren, wie das Verfahren abläuft und welche Kosten voraussichtlich entstehen.</p>
-            <figure class="mo-pc__visual"><img src="assets/img/photo-f98501666-1024.webp" srcset="assets/img/photo-f98501666-640.webp 640w, assets/img/photo-f98501666-1024.webp 1024w, assets/img/photo-f98501666-1600.webp 1600w, assets/img/photo-f98501666-2400.webp 2400w" sizes="(max-width: 1023px) 100vw, 628px" width="1024" height="683" alt="Geöffneter Füllfederhalter auf einem Holztisch" loading="lazy" decoding="async" data-source="stand-in" data-subject="fountain pen on a wooden desk"></figure>
           </li>
-          <li class="mo-pc__step">
+          <li class="steps__item">
+            <span class="steps__num" aria-hidden="true">2</span>
             <h3>Prüfung Ihrer Unterlagen</h3>
             <p>Bescheide, Verträge und Schreiben werden geprüft. Sie erhalten eine Einschätzung Ihrer Lage und einen Vorschlag für das weitere Vorgehen.</p>
-            <figure class="mo-pc__visual"><img src="assets/img/photo-f83119900-1024.webp" srcset="assets/img/photo-f83119900-640.webp 640w, assets/img/photo-f83119900-1024.webp 1024w, assets/img/photo-f83119900-1600.webp 1600w" sizes="(max-width: 1023px) 100vw, 628px" width="1024" height="731" alt="Ledergebundene Aktenbände in einem Regal" loading="lazy" decoding="async" data-source="stand-in" data-subject="leather-bound case files"></figure>
           </li>
-          <li class="mo-pc__step">
+          <li class="steps__item">
+            <span class="steps__num" aria-hidden="true">3</span>
             <h3>Vertretung bei Behörden und Gerichten</h3>
             <p>Die Kanzlei führt den Schriftverkehr mit Behörden, Gegnern und Versicherungen und vertritt Sie vor Gericht.</p>
-            <figure class="mo-pc__visual"><img src="assets/img/photo-f130916005-1024.webp" srcset="assets/img/photo-f130916005-640.webp 640w, assets/img/photo-f130916005-1024.webp 1024w, assets/img/photo-f130916005-1600.webp 1600w, assets/img/photo-f130916005-2400.webp 2400w" sizes="(max-width: 1023px) 100vw, 628px" width="1024" height="683" alt="Der Justizpalast in München mit Brunnen im Vordergrund" loading="lazy" decoding="async" data-source="stand-in" data-subject="Palace of Justice, Munich"></figure>
           </li>
         </ol>
       </div>
-      <div class="mo-pc__visuals frame"></div>
     </div>
   </section>
 
-  <section class="section tab2" id="anwalt" style=" --hm: 2" aria-labelledby="anwalt-h">
-    <div class="wrap grid grid--top split">
-      <div class="span-5 split__text">
+  <section class="section section--ui" id="anwalt" aria-labelledby="anwalt-h">
+    <div class="wrap grid grid--top ui-split">
+      <div class="span-4 ui-split__head">
         <div class="section-head">
           <h2 id="anwalt-h">Dr. Kenan Ertunc M.A.</h2>
           <p>Rechtsanwalt und Fachanwalt für Migrationsrecht, Mitglied der Rechtsanwaltskammer München und des Deutschen Anwaltvereins.</p>
         </div>
-        <ul class="rows">
-            <li><span class="rows__name">Studium</span><p>Rechtswissenschaft, Arbeitswissenschaft und Europastudien in Bremen, Saarbrücken und Mailand.</p></li>
-            <li><span class="rows__name">Promotion</span><p>Graduate School for Social and Political Science der Universität Mailand.</p></li>
-            <li><span class="rows__name">Forschung</span><p>Gastforscher an der Warwick Business School und der University of Cambridge.</p></li>
-            <li><span class="rows__name">Praxis</span><p>Syndikus und Rechtsanwalt in einer internationalen Wirtschaftskanzlei in München.</p></li>
-          </ul>
+        <ul class="badges"><li class="badge badge--soft"><svg class="ico ico--sm" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Fachanwalt für Migrationsrecht</li><li class="badge badge--soft"><svg class="ico ico--sm" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Promotion in Mailand</li><li class="badge badge--soft"><svg class="ico ico--sm" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Beratung in vier Sprachen</li></ul>
         <p class="split__more"><a class="link" href="rechtsanwalt/">Werdegang und Publikationen lesen</a></p>
       </div>
-      <div class="frame frame--photo split__media span-6 start-7"><img class="frame__img" src="assets/img/photo-f134488615-1024.webp" srcset="assets/img/photo-f134488615-640.webp 640w, assets/img/photo-f134488615-1024.webp 1024w, assets/img/photo-f134488615-1600.webp 1600w" sizes="(max-width: 639px) 800px, (max-width: 1023px) 1200px, 1060px" width="1024" height="683" alt="Gang zwischen Bücherregalen in einer juristischen Bibliothek" loading="lazy" decoding="async" style="--pos: 50% 50%; object-position: 50% 50%" data-source="stand-in" data-subject="law library interior"></div>
+      <div class="span-8 start-5 ui-split__body">
+        <ol class="tl" data-reveal>
+            <li class="tl__item"><span class="tl__dot" aria-hidden="true"></span><h3 class="tl__name">Studium</h3><p>Rechtswissenschaft, Arbeitswissenschaft und Europastudien in Bremen, Saarbrücken und Mailand.</p></li>
+            <li class="tl__item"><span class="tl__dot" aria-hidden="true"></span><h3 class="tl__name">Promotion</h3><p>Graduate School for Social and Political Science der Universität Mailand.</p></li>
+            <li class="tl__item"><span class="tl__dot" aria-hidden="true"></span><h3 class="tl__name">Forschung</h3><p>Gastforscher an der Warwick Business School und der University of Cambridge.</p></li>
+            <li class="tl__item"><span class="tl__dot" aria-hidden="true"></span><h3 class="tl__name">Praxis</h3><p>Syndikus und Rechtsanwalt in einer internationalen Wirtschaftskanzlei in München.</p></li>
+          </ol>
+      </div>
     </div>
   </section>
 
-  <section class="section" id="kosten" style="--hm: 2" aria-labelledby="kosten-h">
+  <section class="section section--ui" id="kosten" aria-labelledby="kosten-h">
     <div class="wrap">
-      <div class="section-head section-head--split">
-        <div><h2 id="kosten-h">Kosten und Abrechnung</h2><p class="t-lead">Der erste Kontakt ist kostenfrei. Wie danach abgerechnet wird, steht fest, bevor das Mandat beginnt.</p></div>
+      <div class="ui-head ui-head--split">
+        <div class="section-head"><h2 id="kosten-h">Kosten und Abrechnung</h2><p>Der erste Kontakt ist kostenfrei. Wie danach abgerechnet wird, steht fest, bevor das Mandat beginnt.</p></div>
+        <p class="split__more"><a class="link" href="kosten/">Fragen zu den Kosten lesen</a></p>
       </div>
-      <div class="grid fees">
-        <div class="span-4 fee"><p class="fee__value">RVG</p><p class="fee__name">Gesetzliche Gebühren</p><p>Nach dem Rechtsanwaltsvergütungsgesetz, abhängig vom Gegenstandswert.</p></div>
-        <div class="span-4 fee"><p class="fee__value">Stundensatz</p><p class="fee__name">Stundenhonorar</p><p>Abgerechnet wird der Zeitaufwand zu einem vorher vereinbarten Satz.</p></div>
-        <div class="span-4 fee"><p class="fee__value">Festbetrag</p><p class="fee__name">Pauschale</p><p>Ein fester Betrag für ein klar umrissenes Mandat.</p></div>
-      </div>
-      <div class="wide-photo"><img src="assets/img/photo-f28572353-1024.webp" srcset="assets/img/photo-f28572353-640.webp 640w, assets/img/photo-f28572353-1024.webp 1024w, assets/img/photo-f28572353-1600.webp 1600w, assets/img/photo-f28572353-2400.webp 2400w" sizes="(max-width: 1440px) calc(100vw - 48px), 1280px" width="1024" height="726" alt="Ein Stapel Fachbücher zum Völkerrecht auf einem Marmortisch" loading="lazy" decoding="async" style="--pos: 50% 45%; object-position: 50% 45%" data-source="stand-in" data-subject="books on international law"></div>
-      <p class="split__more"><a class="link" href="kosten/">Fragen zu den Kosten lesen</a></p>
+      <ul class="cards cards--3 fees" data-reveal>
+        <li class="card-item fee"><span class="card-item__icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8z"/><path d="M14 2.5V8h5.5"/><path d="M8.5 13h7M8.5 17h4.5"/></svg></span><div class="card-item__body"><p class="fee__value">RVG</p><h3 class="card-item__name">Gesetzliche Gebühren</h3><p>Nach dem Rechtsanwaltsvergütungsgesetz, abhängig vom Gegenstandswert.</p></div></li>
+        <li class="card-item fee"><span class="card-item__icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 6.5V12l3.5 2"/></svg></span><div class="card-item__body"><p class="fee__value">Stundensatz</p><h3 class="card-item__name">Stundenhonorar</h3><p>Abgerechnet wird der Zeitaufwand zu einem vorher vereinbarten Satz.</p></div></li>
+        <li class="card-item fee"><span class="card-item__icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L2.5 12.5V2.5h10l8.1 8.1a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span><div class="card-item__body"><p class="fee__value">Festbetrag</p><h3 class="card-item__name">Pauschale</h3><p>Ein fester Betrag für ein klar umrissenes Mandat.</p></div></li>
+      </ul>
     </div>
   </section>
 
@@ -206,12 +226,13 @@
 
 <footer class="footer closing" id="contact" aria-labelledby="close-h">
   <div class="wrap">
-    <div class="closing__cta close--photo">
-      <div class="section-head--split">
-        <div><h2 id="close-h">Erstgespräch in Rosenheim vereinbaren</h2><p class="t-lead">Der erste Kontakt ist kostenfrei: am Telefon, per E-Mail oder in der Kanzlei.</p></div>
+    <div class="closing__cta close--panel ground-inverse">
+      <div class="close-panel__words"><h2 id="close-h">Erstgespräch in Rosenheim vereinbaren</h2><p class="t-lead">Der erste Kontakt ist kostenfrei: am Telefon, per E-Mail oder in der Kanzlei.</p></div>
+      <div class="close-panel__actions">
         <a class="btn btn--primary" href="kontakt/#anfrage">Erstgespräch vereinbaren<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+        <a class="close-panel__chip" href="tel:+4980312092448"><svg class="ico ico--sm" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 16.6v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 1.6 3.8 2 2 0 0 1 3.6 1.6h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.5 9.5a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2.2z"/></svg>08031 209 24 48</a>
+        <a class="close-panel__chip" href="mailto:info@rechtsanwalt-ertunc.com"><svg class="ico ico--sm" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m21.5 7-9.5 6L2.5 7"/></svg>info@rechtsanwalt-ertunc.com</a>
       </div>
-      <div class="close__media"><img src="assets/img/photo-f177063630-1024.webp" srcset="assets/img/photo-f177063630-640.webp 640w, assets/img/photo-f177063630-1024.webp 1024w, assets/img/photo-f177063630-1600.webp 1600w, assets/img/photo-f177063630-2400.webp 2400w" sizes="(max-width: 639px) 600px, (max-width: 1440px) calc(100vw - 48px), 1280px" width="1024" height="1024" alt="Der Ludwigsplatz in Rosenheim am Morgen" loading="lazy" decoding="async" style="--pos: 50% 62%; object-position: 50% 62%" data-source="stand-in" data-subject="Ludwigsplatz, Rosenheim"></div>
     </div>
     <div class="closing__links">
       <div class="grid">
@@ -238,5 +259,6 @@
 <script type="module" src="assets/system.js"></script>
 <script type="module" src="assets/motion/motion.js"></script>
 <script type="module" src="assets/layout/layout.js"></script>
+<script type="module" src="assets/site.js"></script>
 </body>
 </html>

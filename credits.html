@@ -41,11 +41,11 @@
 }
 </style>
 <link rel="stylesheet" href="assets/site.css">
-<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver'in window)document.documentElement.classList.add('rv');document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
 </head>
 <body>
 <!-- type: service (Kanzlei, site-kind other)
-     deal: hero film (no film: the poster is a stand-in photograph, no play control), nav nav-split, close close-photo,
+     deal: hero film (no film: the poster is a stand-in photograph, no play control), nav nav-split, close close-panel (no photograph),
      footer footer-columns, rhythm space, buttons tonal, mark stack, palette oxblood-grey, type instrument-serif
      moments: none
      Built by src/build.mjs: edit the content in src/content/*.mjs and run "node src/build.mjs". -->

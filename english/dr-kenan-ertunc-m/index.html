@@ -44,16 +44,13 @@
 }
 </style>
 <link rel="stylesheet" href="../../assets/site.css">
-<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
-<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
-<link rel="modulepreload" href="../../assets/moments/moments.js"><link rel="modulepreload" href="../../assets/moments/lib.js">
-<link rel="modulepreload" href="../../assets/moments/picture-develops/moment.js">
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver'in window)document.documentElement.classList.add('rv');document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
 </head>
 <body>
 <!-- type: service (Kanzlei, site-kind other)
-     deal: hero film (no film: the poster is a stand-in photograph, no play control), nav nav-split, close close-photo,
+     deal: hero film (no film: the poster is a stand-in photograph, no play control), nav nav-split, close close-panel (no photograph),
      footer footer-columns, rhythm space, buttons tonal, mark stack, palette oxblood-grey, type instrument-serif
-     moments: picture-develops
+     moments: none
      Built by src/build.mjs: edit the content in src/content/*.mjs and run "node src/build.mjs". -->
 <header class="nav nav--split">
   <div class="wrap nav__bar">
@@ -115,40 +112,51 @@
     </div></div>
   </section>
 
-  <section class="section ph-short" id="career" style=" --hm: 2" aria-labelledby="career-h">
-    <div class="wrap grid grid--top split">
-      <div class="span-5 split__text">
+  <section class="section section--ui" id="career" aria-labelledby="career-h">
+    <div class="wrap grid grid--top ui-split">
+      <div class="span-4 ui-split__head">
         <div class="section-head">
           <h2 id="career-h">Career</h2>
           <p>Education, research and practice in four countries.</p>
         </div>
-        <ul class="rows">
-            <li><span class="rows__name">Studies</span><p>Law, labour studies and European studies in Bremen, Saarbrücken and Milan.</p></li>
-            <li><span class="rows__name">Legal clerkship</span><p>At the Higher Regional Court of Saarland, Saarbrücken.</p></li>
-            <li><span class="rows__name">Doctorate</span><p>Graduate School for Social and Political Science, University of Milan.</p></li>
-            <li><span class="rows__name">Research</span><p>Industrial Relations Research Unit, Warwick Business School; Centre for Business Research, University of Cambridge; research fellow at Warwick Law School.</p></li>
-            <li><span class="rows__name">International bodies</span><p>International Labour Organization (ILO), Geneva; European Trade Union Institute (ETUI), Brussels.</p></li>
-            <li><span class="rows__name">Practice</span><p>In-house counsel at a consultancy and lawyer at an international business law firm, both in Munich.</p></li>
-          </ul>
       </div>
-      <figure class="develop span-6 start-7" data-moment="picture-develops"><img src="../../assets/img/photo-f79428019-1024.webp" srcset="../../assets/img/photo-f79428019-640.webp 640w, ../../assets/img/photo-f79428019-1024.webp 1024w, ../../assets/img/photo-f79428019-1600.webp 1600w, ../../assets/img/photo-f79428019-2400.webp 2400w" sizes="(max-width: 639px) 800px, (max-width: 1023px) 1200px, 1060px" width="1024" height="683" alt="A law library reading room with a timber ceiling and chandeliers" loading="lazy" decoding="async" style="--pos: 50% 50%; object-position: 50% 50%" data-source="stand-in" data-subject="law library reading room"></figure>
+      <div class="span-8 start-5 ui-split__body">
+        <ol class="tl" data-reveal>
+            <li class="tl__item"><span class="tl__dot" aria-hidden="true"></span><h3 class="tl__name">Studies</h3><p>Law, labour studies and European studies in Bremen, Saarbrücken and Milan.</p></li>
+            <li class="tl__item"><span class="tl__dot" aria-hidden="true"></span><h3 class="tl__name">Legal clerkship</h3><p>At the Higher Regional Court of Saarland, Saarbrücken.</p></li>
+            <li class="tl__item"><span class="tl__dot" aria-hidden="true"></span><h3 class="tl__name">Doctorate</h3><p>Graduate School for Social and Political Science, University of Milan.</p></li>
+            <li class="tl__item"><span class="tl__dot" aria-hidden="true"></span><h3 class="tl__name">Research</h3><p>Industrial Relations Research Unit, Warwick Business School; Centre for Business Research, University of Cambridge; research fellow at Warwick Law School.</p></li>
+            <li class="tl__item"><span class="tl__dot" aria-hidden="true"></span><h3 class="tl__name">International bodies</h3><p>International Labour Organization (ILO), Geneva; European Trade Union Institute (ETUI), Brussels.</p></li>
+            <li class="tl__item"><span class="tl__dot" aria-hidden="true"></span><h3 class="tl__name">Practice</h3><p>In-house counsel at a consultancy and lawyer at an international business law firm, both in Munich.</p></li>
+          </ol>
+      </div>
     </div>
   </section>
 
-  <section class="section" id="publications" style=" --hm: 2" aria-labelledby="publications-h">
-    <div class="wrap grid grid--top split">
-      <div class="span-5 split__text">
+  <section class="section section--ui" id="publications" aria-labelledby="publications-h">
+    <div class="wrap grid grid--top ui-split">
+      <div class="span-4 ui-split__head">
         <div class="section-head">
           <h2 id="publications-h">Publications and memberships</h2>
           <p>Specialist training in migration law (Fachanwalt für Migrationsrecht). Advice in English, German, Turkish and Italian; Kurdish and Arabic with interpreters.</p>
         </div>
-        <ul class="rows">
-            <li><span class="rows__name"><a class="link" href="https://trs.sagepub.com/content/19/2/281.short" rel="noopener">Fundamental Social Rights in the European Multilevel Governance System</a></span><p>Transfer: European Review of Labour and Research, 2013, p. 281.</p></li>
-            <li><span class="rows__name"><a class="link" href="https://air.unimi.it/handle/2434/233514" rel="noopener">The Legal Implications of the Social Market Economy on the European Economic Constitution</a></span><p>Doctoral thesis, University of Milan, 2014.</p></li>
-            <li><span class="rows__name">Memberships</span><p>Munich Bar (Rechtsanwaltskammer München), German Bar Association (Deutscher Anwaltverein).</p></li>
+      </div>
+      <div class="span-8 start-5 ui-split__body">
+        <ul class="cards cards--1" data-reveal>
+            <li class="card-item">
+              <span class="card-item__icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2.5H6.5A2.5 2.5 0 0 0 4 5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></span>
+              <div class="card-item__body"><h3 class="card-item__name"><a class="link" href="https://trs.sagepub.com/content/19/2/281.short" rel="noopener">Fundamental Social Rights in the European Multilevel Governance System</a></h3><p>Transfer: European Review of Labour and Research, 2013, p. 281.</p></div>
+            </li>
+            <li class="card-item">
+              <span class="card-item__icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2.5H6.5A2.5 2.5 0 0 0 4 5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></svg></span>
+              <div class="card-item__body"><h3 class="card-item__name"><a class="link" href="https://air.unimi.it/handle/2434/233514" rel="noopener">The Legal Implications of the Social Market Economy on the European Economic Constitution</a></h3><p>Doctoral thesis, University of Milan, 2014.</p></div>
+            </li>
+            <li class="card-item">
+              <span class="card-item__icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="6"/><path d="M15.5 13.4 17 22l-5-3-5 3 1.5-8.6"/></svg></span>
+              <div class="card-item__body"><h3 class="card-item__name">Memberships</h3><p>Munich Bar (Rechtsanwaltskammer München), German Bar Association (Deutscher Anwaltverein).</p></div>
+            </li>
           </ul>
       </div>
-      <div class="frame frame--photo split__media span-6 start-7"><img class="frame__img" src="../../assets/img/photo-f28572353-1024.webp" srcset="../../assets/img/photo-f28572353-640.webp 640w, ../../assets/img/photo-f28572353-1024.webp 1024w, ../../assets/img/photo-f28572353-1600.webp 1600w, ../../assets/img/photo-f28572353-2400.webp 2400w" sizes="(max-width: 639px) 800px, (max-width: 1023px) 1200px, 1060px" width="1024" height="726" alt="A stack of books on international law on a marble table" loading="lazy" decoding="async" style="--pos: 40% 50%; object-position: 40% 50%" data-source="stand-in" data-subject="books on international law"></div>
     </div>
   </section>
 
@@ -156,12 +164,13 @@
 
 <footer class="footer closing" id="contact" aria-labelledby="close-h">
   <div class="wrap">
-    <div class="closing__cta close--photo">
-      <div class="section-head--split">
-        <div><h2 id="close-h">Book a consultation with Dr. Ertunc</h2><p class="t-lead">The first contact is free of charge: by phone, by email or at the office.</p></div>
+    <div class="closing__cta close--panel ground-inverse">
+      <div class="close-panel__words"><h2 id="close-h">Book a consultation with Dr. Ertunc</h2><p class="t-lead">The first contact is free of charge: by phone, by email or at the office.</p></div>
+      <div class="close-panel__actions">
         <a class="btn btn--primary" href="../../english/contact-us/#request">Book a first consultation<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+        <a class="close-panel__chip" href="tel:+4980312092448"><svg class="ico ico--sm" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 16.6v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 1.6 3.8 2 2 0 0 1 3.6 1.6h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.5 9.5a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2.2z"/></svg>+49 8031 209 24 48</a>
+        <a class="close-panel__chip" href="mailto:info@rechtsanwalt-ertunc.com"><svg class="ico ico--sm" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m21.5 7-9.5 6L2.5 7"/></svg>info@rechtsanwalt-ertunc.com</a>
       </div>
-      <div class="close__media"><img src="../../assets/img/photo-f82730221-1024.webp" srcset="../../assets/img/photo-f82730221-640.webp 640w, ../../assets/img/photo-f82730221-1024.webp 1024w, ../../assets/img/photo-f82730221-1600.webp 1600w, ../../assets/img/photo-f82730221-2400.webp 2400w" sizes="(max-width: 639px) 600px, (max-width: 1440px) calc(100vw - 48px), 1280px" width="1024" height="813" alt="The Mittertor gate in Rosenheim’s old town" loading="lazy" decoding="async" style="--pos: 50% 55%; object-position: 50% 55%" data-source="stand-in" data-subject="Mittertor, Rosenheim"></div>
     </div>
     <div class="closing__links">
       <div class="grid">
@@ -188,5 +197,6 @@
 <script type="module" src="../../assets/system.js"></script>
 <script type="module" src="../../assets/motion/motion.js"></script>
 <script type="module" src="../../assets/layout/layout.js"></script>
+<script type="module" src="../../assets/site.js"></script>
 </body>
 </html>

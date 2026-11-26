@@ -36,12 +36,13 @@ node src/build.mjs
 ## Fotos austauschen
 
 Alle Fotos sind **lizenzfreie Platzhalter von Wikimedia Commons** (Nachweise in `/credits.html`).
-Sobald eigene Fotos vorliegen, bitte ersetzen, vor allem:
+Fotos stehen bewusst nur noch in den Kopfbildern jeder Seite, in der Menükarte „Rechtsgebiete“ und bei
+„So finden Sie die Kanzlei“ (Kontakt). Aufzählungen (Rechtsgebiete, Werdegang, Ablauf, Kosten) sind
+Karten, Zeitleiste und Schritte ohne Bild. Sobald eigene Fotos vorliegen, bitte ersetzen, vor allem:
 
-1. **Porträt von Dr. Ertunc** (hochkant, Tageslicht, ruhiger Hintergrund): Startseite Abschnitt
-   „Dr. Kenan Ertunc M.A.“ und Seite „Rechtsanwalt“, Abschnitt „Werdegang“.
-2. Die Kanzlei von außen (Eingang Adlzreiterstraße) und ein Besprechungsraum.
-3. Schreibtisch- und Detailaufnahmen (Akten, Gesetzestexte, Hände beim Schreiben).
+1. **Porträt von Dr. Ertunc** (Tageslicht, ruhiger Hintergrund): Kopfbild der Seite „Rechtsanwalt“.
+2. Die Kanzlei von außen (Eingang Adlzreiterstraße): Kopfbild „Kontakt“ und „So finden Sie die Kanzlei“.
+3. Schreibtisch- und Detailaufnahmen (Akten, Gesetzestexte) für die übrigen Kopfbilder.
 
 Ein neues Foto als WebP in `assets/img/` ablegen (Breiten 640, 1024, 1600, 2400:
 `photo-<name>-<breite>.webp`, für Kopfbilder zusätzlich `photo-<name>-phone.webp` mit 760×1600),

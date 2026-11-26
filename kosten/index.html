@@ -41,16 +41,13 @@
 }
 </style>
 <link rel="stylesheet" href="../assets/site.css">
-<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
-<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
-<link rel="modulepreload" href="../assets/moments/moments.js"><link rel="modulepreload" href="../assets/moments/lib.js">
-<link rel="modulepreload" href="../assets/moments/picture-develops/moment.js">
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver'in window)document.documentElement.classList.add('rv');document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
 </head>
 <body>
 <!-- type: service (Kanzlei, site-kind other)
-     deal: hero film (no film: the poster is a stand-in photograph, no play control), nav nav-split, close close-photo,
+     deal: hero film (no film: the poster is a stand-in photograph, no play control), nav nav-split, close close-panel (no photograph),
      footer footer-columns, rhythm space, buttons tonal, mark stack, palette oxblood-grey, type instrument-serif
-     moments: picture-develops
+     moments: none
      Built by src/build.mjs: edit the content in src/content/*.mjs and run "node src/build.mjs". -->
 <header class="nav nav--split">
   <div class="wrap nav__bar">
@@ -112,20 +109,26 @@
     </div></div>
   </section>
 
-  <section class="section stack-tab" id="abrechnung" style=" --hm: 2" aria-labelledby="abrechnung-h">
-    <div class="wrap grid grid--top split">
-      <div class="span-5 split__text">
-        <div class="section-head">
+  <section class="section section--ui" id="abrechnung" aria-labelledby="abrechnung-h">
+    <div class="wrap">
+      <div class="ui-head"><div class="section-head">
           <h2 id="abrechnung-h">Drei Arten der Abrechnung</h2>
           <p>Welche für Ihren Fall gilt, hängt vom Rechtsgebiet und vom Umfang ab. Sie erfahren es vor Beginn des Mandats.</p>
-        </div>
-        <ul class="rows">
-            <li><span class="rows__name">Gesetzliche Gebühren nach RVG</span><p>Die Gebühren richten sich nach dem Gegenstandswert und den Tätigkeiten, die das Rechtsanwaltsvergütungsgesetz vorsieht.</p></li>
-            <li><span class="rows__name">Stundenhonorar</span><p>Abgerechnet wird der tatsächliche Zeitaufwand zu einem vorher vereinbarten Stundensatz.</p></li>
-            <li><span class="rows__name">Pauschalvergütung</span><p>Für ein klar umrissenes Mandat wird ein fester Betrag vereinbart.</p></li>
+        </div></div>
+      <ul class="cards cards--3" data-reveal>
+            <li class="card-item">
+              <span class="card-item__icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8z"/><path d="M14 2.5V8h5.5"/><path d="M8.5 13h7M8.5 17h4.5"/></svg></span>
+              <div class="card-item__body"><h3 class="card-item__name">Gesetzliche Gebühren nach RVG</h3><p>Die Gebühren richten sich nach dem Gegenstandswert und den Tätigkeiten, die das Rechtsanwaltsvergütungsgesetz vorsieht.</p></div>
+            </li>
+            <li class="card-item">
+              <span class="card-item__icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M12 6.5V12l3.5 2"/></svg></span>
+              <div class="card-item__body"><h3 class="card-item__name">Stundenhonorar</h3><p>Abgerechnet wird der tatsächliche Zeitaufwand zu einem vorher vereinbarten Stundensatz.</p></div>
+            </li>
+            <li class="card-item">
+              <span class="card-item__icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L2.5 12.5V2.5h10l8.1 8.1a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg></span>
+              <div class="card-item__body"><h3 class="card-item__name">Pauschalvergütung</h3><p>Für ein klar umrissenes Mandat wird ein fester Betrag vereinbart.</p></div>
+            </li>
           </ul>
-      </div>
-      <figure class="develop span-6 start-7" data-moment="picture-develops"><img src="../assets/img/photo-f83119900-1024.webp" srcset="../assets/img/photo-f83119900-640.webp 640w, ../assets/img/photo-f83119900-1024.webp 1024w, ../assets/img/photo-f83119900-1600.webp 1600w" sizes="(max-width: 639px) 800px, (max-width: 1023px) 1200px, 1060px" width="1024" height="731" alt="Ledergebundene Aktenbände in einem Regal" loading="lazy" decoding="async" data-source="stand-in" data-subject="leather-bound case files"></figure>
     </div>
   </section>
 
@@ -152,12 +155,13 @@
 
 <footer class="footer closing" id="contact" aria-labelledby="close-h">
   <div class="wrap">
-    <div class="closing__cta close--photo">
-      <div class="section-head--split">
-        <div><h2 id="close-h">Kosten im ersten Gespräch klären</h2><p class="t-lead">Kostenfrei, am Telefon unter 08031 209 24 48 oder per E-Mail.</p></div>
+    <div class="closing__cta close--panel ground-inverse">
+      <div class="close-panel__words"><h2 id="close-h">Kosten im ersten Gespräch klären</h2><p class="t-lead">Kostenfrei, am Telefon unter 08031 209 24 48 oder per E-Mail.</p></div>
+      <div class="close-panel__actions">
         <a class="btn btn--primary" href="../kontakt/#anfrage">Erstgespräch vereinbaren<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+        <a class="close-panel__chip" href="tel:+4980312092448"><svg class="ico ico--sm" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 16.6v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 1.6 3.8 2 2 0 0 1 3.6 1.6h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.5 9.5a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2.2z"/></svg>08031 209 24 48</a>
+        <a class="close-panel__chip" href="mailto:info@rechtsanwalt-ertunc.com"><svg class="ico ico--sm" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m21.5 7-9.5 6L2.5 7"/></svg>info@rechtsanwalt-ertunc.com</a>
       </div>
-      <div class="close__media"><img src="../assets/img/photo-f82730221-1024.webp" srcset="../assets/img/photo-f82730221-640.webp 640w, ../assets/img/photo-f82730221-1024.webp 1024w, ../assets/img/photo-f82730221-1600.webp 1600w, ../assets/img/photo-f82730221-2400.webp 2400w" sizes="(max-width: 639px) 600px, (max-width: 1440px) calc(100vw - 48px), 1280px" width="1024" height="813" alt="Das Mittertor in der Rosenheimer Altstadt" loading="lazy" decoding="async" style="--pos: 50% 55%; object-position: 50% 55%" data-source="stand-in" data-subject="Mittertor, Rosenheim"></div>
     </div>
     <div class="closing__links">
       <div class="grid">
@@ -184,5 +188,6 @@
 <script type="module" src="../assets/system.js"></script>
 <script type="module" src="../assets/motion/motion.js"></script>
 <script type="module" src="../assets/layout/layout.js"></script>
+<script type="module" src="../assets/site.js"></script>
 </body>
 </html>

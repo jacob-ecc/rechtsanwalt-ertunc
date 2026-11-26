@@ -84,14 +84,14 @@ ${alts}
 }
 </style>
 <link rel="stylesheet" href="${p}assets/site.css">
-<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>${moments.length ? `
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver'in window)document.documentElement.classList.add('rv');document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>${moments.length ? `
 <script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
 <link rel="modulepreload" href="${p}assets/moments/moments.js"><link rel="modulepreload" href="${p}assets/moments/lib.js">
 ${moments.map(m => `<link rel="modulepreload" href="${p}assets/moments/${m}/moment.js">`).join('')}` : ''}
 </head>
 <body>
 <!-- type: service (Kanzlei, site-kind other)
-     deal: hero film (no film: the poster is a stand-in photograph, no play control), nav nav-split, close close-photo,
+     deal: hero film (no film: the poster is a stand-in photograph, no play control), nav nav-split, close close-panel (no photograph),
      footer footer-columns, rhythm space, buttons tonal, mark stack, palette oxblood-grey, type instrument-serif
      moments: ${moments.join(', ') || 'none'}
      Built by src/build.mjs: edit the content in src/content/*.mjs and run "node src/build.mjs". -->
@@ -169,9 +169,78 @@ export const rows = (items, cls = 'rows') => `<ul class="${cls}">
 ${items.map(r => `            <li${r.id ? ` id="${r.id}"` : ''}><span class="rows__name">${r.name}</span>${r.line ? `<p>${r.line}</p>` : ''}${r.value ? `<span class="rows__value">${r.value}</span>` : ''}</li>`).join('\n')}
           </ul>`;
 
-/** a split: words on span-5, the photograph on span-6 start-7 */
+/* ---------- small line icons (24px grid, drawn in currentColor) ---------- */
+const ICON_PATHS = {
+  globe: '<circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19"/><path d="M12 2.5a14.5 14.5 0 0 1 0 19 14.5 14.5 0 0 1 0-19z"/>',
+  users: '<path d="M16 20v-1.5a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4V20"/><circle cx="9" cy="7" r="3.5"/><path d="M22 20v-1.5a4 4 0 0 0-3-3.85"/><path d="M15.5 3.6a3.5 3.5 0 0 1 0 6.8"/>',
+  briefcase: '<rect x="2.5" y="7" width="19" height="13" rx="2"/><path d="M8.5 7V5a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v2"/><path d="M2.5 12.5h19"/>',
+  gavel: '<path d="m14 13-7.5 7.5a2.12 2.12 0 0 1-3-3L11 10"/><path d="m16 16 6-6"/><path d="m8 8 6-6"/><path d="m9 7 8 8"/><path d="m21 11-8-8"/>',
+  car: '<path d="M4 16.5V12l2.3-5h11.4L20 12v4.5z"/><path d="M4 12h16"/><circle cx="7.5" cy="16.5" r="1.8"/><circle cx="16.5" cy="16.5" r="1.8"/>',
+  idcard: '<rect x="2.5" y="5" width="19" height="14" rx="2"/><circle cx="9" cy="11" r="2.2"/><path d="M5.8 16c.6-1.4 1.7-2 3.2-2s2.6.6 3.2 2"/><path d="M15 10h3.5M15 13.5h3.5"/>',
+  landmark: '<path d="M3 21h18"/><path d="M5.5 17.5v-7M10 17.5v-7M14 17.5v-7M18.5 17.5v-7"/><path d="M12 3 21 8H3z"/>',
+  send: '<path d="m21.5 2.5-6.5 19-4-8.5-8.5-4z"/><path d="M21.5 2.5 11 13"/>',
+  shield: '<path d="M12 21.5s8-3.8 8-9.8V5.2L12 2.5 4 5.2v6.5c0 6 8 9.8 8 9.8z"/><path d="m8.8 12 2.2 2.2 4.2-4.4"/>',
+  alert: '<path d="M10.3 3.9 1.9 18a2 2 0 0 0 1.7 3h16.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/>',
+  file: '<path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8z"/><path d="M14 2.5V8h5.5"/><path d="M8.5 13h7M8.5 17h4.5"/>',
+  clock: '<circle cx="12" cy="12" r="9.5"/><path d="M12 6.5V12l3.5 2"/>',
+  tag: '<path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L2.5 12.5V2.5h10l8.1 8.1a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/>',
+  book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2.5H6.5A2.5 2.5 0 0 0 4 5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/>',
+  award: '<circle cx="12" cy="8.5" r="6"/><path d="M15.5 13.4 17 22l-5-3-5 3 1.5-8.6"/>',
+  phone: '<path d="M21.5 16.6v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 1.6 3.8 2 2 0 0 1 3.6 1.6h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.5 9.5a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2.2z"/>',
+  mail: '<rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m21.5 7-9.5 6L2.5 7"/>',
+  check: '<path d="M20 6 9 17l-5-5"/>',
+};
+export const icon = (name, cls = 'ico') => ICON_PATHS[name]
+  ? `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${ICON_PATHS[name]}</svg>`
+  : '';
+
+/** cards: an icon tile, a name, a line; with feature the first card runs across the row (its value is a badge) */
+export const cardGrid = (items, { icons = [], cols = 2, feature = false } = {}) => `<ul class="cards cards--${cols}" data-reveal>
+${items.map((it, i) => `            <li class="card-item${feature && i === 0 ? ' card-item--feature' : ''}"${it.id ? ` id="${it.id}"` : ''}>
+              ${icons[i] ? `<span class="card-item__icon">${icon(icons[i])}</span>` : ''}
+              <div class="card-item__body"><h3 class="card-item__name">${it.name}</h3>${it.line ? `<p>${it.line}</p>` : ''}</div>${it.value ? `
+              <span class="badge">${it.value}</span>` : ''}
+            </li>`).join('\n')}
+          </ul>`;
+
+/** a vertical timeline: a dot on a rule, the station's name, its line */
+export const timeline = (items) => `<ol class="tl" data-reveal>
+${items.map(it => `            <li class="tl__item"><span class="tl__dot" aria-hidden="true"></span><h3 class="tl__name">${it.name}</h3><p>${it.line}</p></li>`).join('\n')}
+          </ol>`;
+
+/** short facts as pills with a check */
+export const badges = (list) => `<ul class="badges">${list.map(b => `<li class="badge badge--soft">${icon('check', 'ico ico--sm')}${b}</li>`).join('')}</ul>`;
+
+/** a split: words on span-5, the photograph on span-6 start-7.
+    Without a photograph (s.photo unset) the heading sits at the left, sticky on a desktop, and s.body (cards,
+    a timeline) at the right; with s.top the heading stands above s.body across the row. */
 export function split(pg, s) {
   const p = pg.p;
+  if (!s.photo) {
+    const more = s.more ? `<p class="split__more"><a class="link" href="${/^(https?:|#)/.test(s.more.href) ? s.more.href : p + s.more.href}">${s.more.label}</a></p>` : '';
+    const head = `<div class="section-head">
+          <h2 id="${s.id}-h">${s.h2}</h2>
+          ${s.lead ? `<p>${s.lead}</p>` : ''}
+        </div>${s.aside ? '\n        ' + s.aside : ''}${more ? '\n        ' + more : ''}`;
+    if (s.top) return `  <section class="section section--ui${s.cls ? ' ' + s.cls : ''}" id="${s.id}" aria-labelledby="${s.id}-h">
+    <div class="wrap">
+      <div class="ui-head">${head}</div>
+      ${s.body}
+    </div>
+  </section>
+`;
+    return `  <section class="section section--ui${s.cls ? ' ' + s.cls : ''}" id="${s.id}" aria-labelledby="${s.id}-h">
+    <div class="wrap grid grid--top ui-split">
+      <div class="span-4 ui-split__head">
+        ${head}
+      </div>
+      <div class="span-8 start-5 ui-split__body">
+        ${s.body}
+      </div>
+    </div>
+  </section>
+`;
+  }
   if (s.hm === undefined) s = { ...s, hm: 2 };
   const media = s.develop
     ? `<figure class="develop span-6 start-7" data-moment="picture-develops">${photo(p, s.photo, pg.lang, { cls: '', pos: s.pos })}</figure>`
@@ -200,40 +269,43 @@ export const statement = (s) => `  <section class="section statement" id="${s.id
   </section>
 `;
 
-/** pinned-chapters: the steps of a mandate beside one frame, two screens */
+/** the steps of a mandate: numbered cards on one rule that fills as the section scrolls by (assets/site.js);
+    no photographs. A step's photo key, if the content still has one, is ignored. */
 export function chapters(pg, s) {
-  const p = pg.p;
-  return `  <section class="section" id="${s.id}" style="--h: 2; --hm: 2" data-moment="pinned-chapters" aria-labelledby="${s.id}-h">
-    <div class="wrap mo-pc__grid">
-      <div class="mo-pc__text">
-        <h2 id="${s.id}-h">${s.h2}</h2>
-        <ol class="mo-pc__steps">
-${s.steps.map(st => `          <li class="mo-pc__step">
+  return `  <section class="section section--ui" id="${s.id}" aria-labelledby="${s.id}-h">
+    <div class="wrap">
+      <div class="ui-head"><div class="section-head">
+        <h2 id="${s.id}-h">${s.h2}</h2>${s.lead ? `
+        <p>${s.lead}</p>` : ''}
+      </div></div>
+      <div class="steps" data-steps>
+        <div class="steps__rail" aria-hidden="true"><span class="steps__fill"></span></div>
+        <ol class="steps__list">
+${s.steps.map((st, i) => `          <li class="steps__item">
+            <span class="steps__num" aria-hidden="true">${i + 1}</span>
             <h3>${st.title}</h3>
             <p>${st.text}</p>
-            <figure class="mo-pc__visual">${photo(p, st.photo, pg.lang, { cls: '', sizes: '(max-width: 1023px) 100vw, 628px' })}</figure>
           </li>`).join('\n')}
         </ol>
       </div>
-      <div class="mo-pc__visuals frame"></div>
     </div>
   </section>
 `;
 }
 
-/** fees: the head, three ways of billing side by side, one wide photograph under them */
+/** fees: the head, three ways of billing as cards side by side (no photograph) */
+const FEE_ICONS = ['file', 'clock', 'tag'];
 export function fees(pg, s) {
   const p = pg.p;
-  return `  <section class="section" id="${s.id}" style="--hm: 2" aria-labelledby="${s.id}-h">
+  return `  <section class="section section--ui" id="${s.id}" aria-labelledby="${s.id}-h">
     <div class="wrap">
-      <div class="section-head section-head--split">
-        <div><h2 id="${s.id}-h">${s.h2}</h2><p class="t-lead">${s.lead}</p></div>
+      <div class="ui-head ui-head--split">
+        <div class="section-head"><h2 id="${s.id}-h">${s.h2}</h2><p>${s.lead}</p></div>
+        ${s.link ? `<p class="split__more"><a class="link" href="${p}${s.link.href}">${s.link.label}</a></p>` : ''}
       </div>
-      <div class="grid fees">
-${s.items.map(it => `        <div class="span-4 fee"><p class="fee__value">${it.value}</p><p class="fee__name">${it.name}</p><p>${it.line}</p></div>`).join('\n')}
-      </div>
-      <div class="wide-photo">${photo(p, s.photo, pg.lang, { cls: '', sizes: '(max-width: 1440px) calc(100vw - 48px), 1280px', pos: s.pos })}</div>
-      ${s.link ? `<p class="split__more"><a class="link" href="${p}${s.link.href}">${s.link.label}</a></p>` : ''}
+      <ul class="cards cards--3 fees" data-reveal>
+${s.items.map((it, i) => `        <li class="card-item fee"><span class="card-item__icon">${icon(FEE_ICONS[i % 3])}</span><div class="card-item__body"><p class="fee__value">${it.value}</p><h3 class="card-item__name">${it.name}</h3><p>${it.line}</p></div></li>`).join('\n')}
+      </ul>
     </div>
   </section>
 `;
@@ -287,12 +359,13 @@ export function footer(pg, T, c) {
   const cols = T.footer.cols.map(col => `        <div class="span-2 footer__col${col.phoneHide ? ' footer__col--wide' : ''}${col.phoneOff ? ' footer__col--nophone' : ''}"><h3>${col.head}</h3><ul>${col.links.map(l => `<li>${l.href !== undefined ? `<a href="${/^(tel|mailto|https?):/.test(l.href) ? l.href : p + l.href}"${l.lang ? ` lang="${l.lang}" hreflang="${l.lang}"` : ''}>${l.label}</a>` : `<span>${l.label}</span>`}</li>`).join('')}</ul></div>`).join('\n');
   return `<footer class="footer closing" id="contact" aria-labelledby="close-h">
   <div class="wrap">
-    <div class="closing__cta close--photo">
-      <div class="section-head--split">
-        <div><h2 id="close-h">${c.h2}</h2><p class="t-lead">${c.line}</p></div>
+    <div class="closing__cta close--panel ground-inverse">
+      <div class="close-panel__words"><h2 id="close-h">${c.h2}</h2><p class="t-lead">${c.line}</p></div>
+      <div class="close-panel__actions">
         ${btn(p + T.actionHref, T.action, 'primary', true)}
+        <a class="close-panel__chip" href="${PHONE.href}">${icon('phone', 'ico ico--sm')}${T.phoneLabel || PHONE.label}</a>
+        <a class="close-panel__chip" href="mailto:${EMAIL}">${icon('mail', 'ico ico--sm')}${EMAIL}</a>
       </div>
-      <div class="close__media">${photo(p, c.photo, pg.lang, { cls: '', sizes: '(max-width: 639px) 600px, (max-width: 1440px) calc(100vw - 48px), 1280px', pos: c.pos })}</div>
     </div>
     <div class="closing__links">
       <div class="grid">
@@ -316,6 +389,7 @@ ${cols}
 <script type="module" src="${p}assets/system.js"></script>
 <script type="module" src="${p}assets/motion/motion.js"></script>
 <script type="module" src="${p}assets/layout/layout.js"></script>
+<script type="module" src="${p}assets/site.js"></script>
 </body>
 </html>
 `;

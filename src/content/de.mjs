@@ -1,5 +1,5 @@
 // Deutsche Seiten. Fakten aus der bisherigen Website www.rechtsanwalt-ertunc.com (Stand November 2026).
-import { rows, split, statement, chapters, faqSplit, form, fees, PHONE, FAX, EMAIL, MAP } from '../parts.mjs';
+import { rows, split, cardGrid, timeline, badges, statement, chapters, faqSplit, form, fees, PHONE, FAX, EMAIL, MAP } from '../parts.mjs';
 
 export const T = {
   lang: 'de',
@@ -74,27 +74,28 @@ export function pages() {
     desc: 'Kanzlei in der Adlzreiterstraße in Rosenheim: Ausländer- und Asylrecht, Familien-, Arbeits-, Straf- und Verkehrsrecht. Beratung auf Deutsch, Türkisch, Englisch und Italienisch.',
     alternates: alt('', 'tuerkce/', 'english/'),
     langLinks: { tr: 'tuerkce/', en: 'english/' },
-    moments: ['word-highlight', 'pinned-chapters'],
+    moments: ['word-highlight'],
     hero: {
       photo: 'pen', pos: '50% 50%',
       h1: 'Anwalt für Migrations&shy;recht in Rosenheim',
       lead: 'Dr. Kenan Ertunc M.A., Fachanwalt für Migrationsrecht, vertritt Sie auch im Familien-, Arbeits-, Straf- und Verkehrsrecht. Kanzlei in der Adlzreiterstraße in Rosenheim, Beratung in vier Sprachen.',
       buttons: [{ href: 'kontakt/#anfrage', label: 'Erstgespräch vereinbaren' }, { href: '#rechtsgebiete', label: 'Rechtsgebiete ansehen' }],
     },
-    close: { h2: 'Erstgespräch in Rosenheim vereinbaren', line: 'Der erste Kontakt ist kostenfrei: am Telefon, per E-Mail oder in der Kanzlei.', photo: 'ludwig', pos: '50% 62%' },
+    close: { h2: 'Erstgespräch in Rosenheim vereinbaren', line: 'Der erste Kontakt ist kostenfrei: am Telefon, per E-Mail oder in der Kanzlei.' },
   });
   home.sections = [
     split(home, {
-      id: 'rechtsgebiete', photo: 'shelves', pos: '45% 80%', cls: 'tab2', hm: 2,
+      id: 'rechtsgebiete',
       h2: 'Rechtsgebiete der Kanzlei',
       lead: 'Schwerpunkt ist das Ausländer- und Asylrecht. Privatpersonen und Unternehmen werden außerdem in vier weiteren Gebieten beraten und vertreten.',
-      body: rows([
+      body: cardGrid([
         { name: 'Ausländer- und Asylrecht', line: 'Aufenthaltstitel, Einbürgerung, Familiennachzug, Asylverfahren und Klagen gegen Bescheide.', value: 'Fachanwalt' },
         { name: 'Familienrecht', line: 'Trennung, Scheidung, Unterhalt, Sorge- und Umgangsrecht.' },
         { name: 'Arbeitsrecht', line: 'Kündigung, Abfindung, Arbeitsvertrag und Zeugnis.' },
         { name: 'Strafrecht', line: 'Verteidigung im Ermittlungs- und Strafverfahren.' },
         { name: 'Verkehrsrecht', line: 'Unfallregulierung, Bußgeld und Führerschein.' },
-      ]) + `\n        <p class="split__more"><a class="link" href="rechtsgebiete/">Alle Rechtsgebiete im Detail lesen</a></p>`,
+      ], { icons: ['globe', 'users', 'briefcase', 'gavel', 'car'], feature: true }),
+      aside: `<p class="split__more"><a class="link" href="rechtsgebiete/">Alle Rechtsgebiete im Detail lesen</a></p>`,
     }),
     statement({
       id: 'sprachen', label: 'Sprachen',
@@ -104,25 +105,27 @@ export function pages() {
     chapters(home, {
       id: 'ablauf', h2: 'So läuft Ihr Mandat ab',
       steps: [
-        { title: 'Erster Kontakt, kostenfrei', photo: 'penwood', text: 'Sie schildern Ihr Anliegen am Telefon, per E-Mail oder in der Kanzlei. Sie erfahren, wie das Verfahren abläuft und welche Kosten voraussichtlich entstehen.' },
-        { title: 'Prüfung Ihrer Unterlagen', photo: 'volumes', text: 'Bescheide, Verträge und Schreiben werden geprüft. Sie erhalten eine Einschätzung Ihrer Lage und einen Vorschlag für das weitere Vorgehen.' },
-        { title: 'Vertretung bei Behörden und Gerichten', photo: 'justiz', text: 'Die Kanzlei führt den Schriftverkehr mit Behörden, Gegnern und Versicherungen und vertritt Sie vor Gericht.' },
+        { title: 'Erster Kontakt, kostenfrei', text: 'Sie schildern Ihr Anliegen am Telefon, per E-Mail oder in der Kanzlei. Sie erfahren, wie das Verfahren abläuft und welche Kosten voraussichtlich entstehen.' },
+        { title: 'Prüfung Ihrer Unterlagen', text: 'Bescheide, Verträge und Schreiben werden geprüft. Sie erhalten eine Einschätzung Ihrer Lage und einen Vorschlag für das weitere Vorgehen.' },
+        { title: 'Vertretung bei Behörden und Gerichten', text: 'Die Kanzlei führt den Schriftverkehr mit Behörden, Gegnern und Versicherungen und vertritt Sie vor Gericht.' },
       ],
     }),
     split(home, {
-      id: 'anwalt', photo: 'harvard', pos: '50% 50%', cls: 'tab2', hm: 2,
+      id: 'anwalt',
       // client slot: replace with the portrait of Dr. Ertunc (4:5, daylight, plain background)
       h2: 'Dr. Kenan Ertunc M.A.',
       lead: 'Rechtsanwalt und Fachanwalt für Migrationsrecht, Mitglied der Rechtsanwaltskammer München und des Deutschen Anwaltvereins.',
-      body: rows([
+      body: timeline([
         { name: 'Studium', line: 'Rechtswissenschaft, Arbeitswissenschaft und Europastudien in Bremen, Saarbrücken und Mailand.' },
         { name: 'Promotion', line: 'Graduate School for Social and Political Science der Universität Mailand.' },
         { name: 'Forschung', line: 'Gastforscher an der Warwick Business School und der University of Cambridge.' },
         { name: 'Praxis', line: 'Syndikus und Rechtsanwalt in einer internationalen Wirtschaftskanzlei in München.' },
-      ]) + `\n        <p class="split__more"><a class="link" href="rechtsanwalt/">Werdegang und Publikationen lesen</a></p>`,
+      ]),
+      aside: `${badges(["Fachanwalt für Migrationsrecht","Promotion in Mailand","Beratung in vier Sprachen"])}
+        <p class="split__more"><a class="link" href="rechtsanwalt/">Werdegang und Publikationen lesen</a></p>`,
     }),
     fees(home, {
-      id: 'kosten', photo: 'intl', pos: '50% 45%',
+      id: 'kosten',
       h2: 'Kosten und Abrechnung',
       lead: 'Der erste Kontakt ist kostenfrei. Wie danach abgerechnet wird, steht fest, bevor das Mandat beginnt.',
       link: { href: 'kosten/', label: 'Fragen zu den Kosten lesen' },
@@ -142,22 +145,22 @@ export function pages() {
     desc: 'Werdegang von Dr. Kenan Ertunc: Studium in Bremen, Saarbrücken und Mailand, Promotion in Mailand, Forschung in Warwick und Cambridge, Praxis in München und Rosenheim.',
     alternates: alt('rechtsanwalt/', 'tuerkce/alman-hukukunda-avukat-dr-kenan-ertunc-m/', 'english/dr-kenan-ertunc-m/'),
     langLinks: { tr: 'tuerkce/alman-hukukunda-avukat-dr-kenan-ertunc-m/', en: 'english/dr-kenan-ertunc-m/' },
-    moments: ['picture-develops'],
+    moments: [],
     hero: {
       photo: 'harvard', pos: '50% 50%',
       h1: 'Rechtsanwalt Dr. Kenan Ertunc M.A.',
       lead: 'Fachanwalt für Migrationsrecht in Rosenheim. Studium und Promotion in Deutschland und Italien, Forschung in Warwick und Cambridge, Praxis in einer Münchner Wirtschaftskanzlei.',
       buttons: [{ href: 'kontakt/#anfrage', label: 'Erstgespräch vereinbaren' }, { href: '#werdegang', label: 'Werdegang ansehen' }],
     },
-    close: { h2: 'Erstgespräch mit Dr. Ertunc vereinbaren', line: `${ADDRESS}. Telefon ${PHONE.label}.`, photo: 'mittertor', pos: '50% 55%' },
+    close: { h2: 'Erstgespräch mit Dr. Ertunc vereinbaren', line: `${ADDRESS}. Telefon ${PHONE.label}.` },
   });
   anwalt.sections = [
     split(anwalt, {
-      id: 'werdegang', photo: 'lesesaal', develop: true, pos: '50% 50%', cls: 'ph-short',
+      id: 'werdegang',
       // client slot: the portrait of Dr. Ertunc belongs here
       h2: 'Werdegang',
       lead: 'Ausbildung, Forschung und Praxis in vier Ländern.',
-      body: rows([
+      body: timeline([
         { name: 'Studium', line: 'Rechtswissenschaft, Arbeitswissenschaft und Europastudien in Bremen, Saarbrücken und Mailand.' },
         { name: 'Referendariat', line: 'Am Saarländischen Oberlandesgericht in Saarbrücken.' },
         { name: 'Promotion', line: 'Graduate School for Social and Political Science der Universität Mailand.' },
@@ -167,14 +170,14 @@ export function pages() {
       ]),
     }),
     split(anwalt, {
-      id: 'publikationen', photo: 'intl', pos: '40% 50%',
+      id: 'publikationen',
       h2: 'Publikationen und Mitgliedschaften',
       lead: 'Fortbildung zum Fachanwalt für Migrationsrecht. Beratung auf Deutsch, Türkisch, Englisch und Italienisch; für Kurdisch und Arabisch mit Dolmetschern.',
-      body: rows([
+      body: cardGrid([
         { name: '<a class="link" href="https://trs.sagepub.com/content/19/2/281.short" rel="noopener">Fundamental Social Rights in the European Multilevel Governance System</a>', line: 'Transfer: European Review of Labour and Research, 2013, S. 281.' },
         { name: '<a class="link" href="https://air.unimi.it/handle/2434/233514" rel="noopener">The Legal Implications of the Social Market Economy on the European Economic Constitution</a>', line: 'Dissertation, Universität Mailand, 2014.' },
         { name: 'Mitgliedschaften', line: 'Rechtsanwaltskammer München, Deutscher Anwaltverein.' },
-      ]),
+      ], { icons: ['book', 'book', 'award'], cols: 1 }),
     }),
   ];
 
@@ -193,20 +196,20 @@ export function pages() {
       lead: 'Fachanwaltliche Beratung im Ausländer- und Asylrecht, dazu Familien-, Arbeits-, Straf- und Verkehrsrecht für Privatpersonen und Unternehmen in Rosenheim.',
       buttons: [{ href: 'kontakt/#anfrage', label: 'Erstgespräch vereinbaren' }, { href: '#migrationsrecht', label: 'Migrationsrecht ansehen' }],
     },
-    close: { h2: 'Ihr Anliegen mit der Kanzlei besprechen', line: `${ADDRESS}. Telefon ${PHONE.label}.`, photo: 'ludwig', pos: '50% 62%' },
+    close: { h2: 'Ihr Anliegen mit der Kanzlei besprechen', line: `${ADDRESS}. Telefon ${PHONE.label}.` },
   });
   gebiete.sections = [
     split(gebiete, {
-      id: 'migrationsrecht', photo: 'justiz', pos: '50% 55%',
+      id: 'migrationsrecht',
       h2: 'Ausländer- und Asylrecht',
       lead: 'Dr. Ertunc trägt den Titel Fachanwalt für Migrationsrecht. Die Kanzlei berät und vertritt Sie unter anderem bei diesen Fragen:',
-      body: rows([
+      body: cardGrid([
         { name: 'Aufenthalt', line: 'Aufenthaltserlaubnis, Niederlassungserlaubnis, Verlängerung und Daueraufenthalt.' },
         { name: 'Einbürgerung', line: 'Antrag, Voraussetzungen und Rechtsmittel bei Ablehnung.' },
         { name: 'Familiennachzug und Visum', line: 'Nachzug von Ehepartnern und Kindern, Visumverfahren.' },
         { name: 'Asylverfahren', line: 'Anhörung, Bescheid und Klage vor dem Verwaltungsgericht.' },
         { name: 'Ausweisung und Abschiebung', line: 'Eilrechtsschutz und Vertretung gegenüber der Ausländerbehörde.' },
-      ]),
+      ], { icons: ['idcard', 'landmark', 'send', 'shield', 'alert'] }),
     }),
     statement({
       id: 'zusammenhang', label: 'Zusammenhänge',
@@ -214,15 +217,15 @@ export function pages() {
       after: '<ul class="lang-row lang-row--3"><li>§ 54 AufenthG<small>Ausweisungsinteresse nach einer Verurteilung</small></li><li>§ 31 AufenthG<small>Eigenes Aufenthaltsrecht des Ehegatten nach der Trennung</small></li><li>§ 18 ff. AufenthG<small>Aufenthalt zum Zweck der Beschäftigung</small></li></ul>',
     }),
     split(gebiete, {
-      id: 'weitere', photo: 'volumes', pos: '50% 50%',
+      id: 'weitere',
       h2: 'Familien-, Arbeits-, Straf- und Verkehrsrecht',
       lead: 'Beratung und Vertretung außergerichtlich und vor Gericht.',
-      body: rows([
+      body: cardGrid([
         { id: 'familienrecht', name: 'Familienrecht', line: 'Trennung und Scheidung, Kindes- und Ehegattenunterhalt, Sorge- und Umgangsrecht, Zugewinnausgleich.' },
         { id: 'arbeitsrecht', name: 'Arbeitsrecht', line: 'Kündigungsschutzklage, Abfindung, Arbeitsvertrag und Arbeitszeugnis, für Arbeitnehmer und Arbeitgeber.' },
         { id: 'strafrecht', name: 'Strafrecht', line: 'Verteidigung im Ermittlungsverfahren, bei Strafbefehl und in der Hauptverhandlung.' },
         { id: 'verkehrsrecht', name: 'Verkehrsrecht', line: 'Unfallregulierung, Bußgeldverfahren, Fahrverbot und Führerschein.' },
-      ]),
+      ], { icons: ['users', 'briefcase', 'gavel', 'car'] }),
     }),
   ];
 
@@ -234,25 +237,25 @@ export function pages() {
     desc: 'Abrechnung nach RVG, Stundenhonorar oder Pauschale. Der erste Kontakt zu Ablauf und voraussichtlichen Kosten ist kostenfrei.',
     alternates: [{ lang: 'de', href: 'kosten/' }],
     langLinks: { tr: 'tuerkce/#ucretler', en: 'english/#fees' },
-    moments: ['picture-develops'],
+    moments: [],
     hero: {
       photo: 'penwood', pos: '40% 50%',
       h1: 'Kosten und Honorar der Kanzlei',
       lead: 'Der erste Kontakt, in dem Sie Ablauf und voraussichtliche Kosten erfahren, ist kostenfrei. Danach wird nach RVG, nach Zeitaufwand oder pauschal abgerechnet.',
       buttons: [{ href: 'kontakt/#anfrage', label: 'Erstgespräch vereinbaren' }, { href: '#abrechnung', label: 'Abrechnung ansehen' }],
     },
-    close: { h2: 'Kosten im ersten Gespräch klären', line: `Kostenfrei, am Telefon unter ${PHONE.label} oder per E-Mail.`, photo: 'mittertor', pos: '50% 55%' },
+    close: { h2: 'Kosten im ersten Gespräch klären', line: `Kostenfrei, am Telefon unter ${PHONE.label} oder per E-Mail.` },
   });
   kosten.sections = [
     split(kosten, {
-      id: 'abrechnung', photo: 'volumes', develop: true, cls: 'stack-tab',
+      id: 'abrechnung', top: true,
       h2: 'Drei Arten der Abrechnung',
       lead: 'Welche für Ihren Fall gilt, hängt vom Rechtsgebiet und vom Umfang ab. Sie erfahren es vor Beginn des Mandats.',
-      body: rows([
+      body: cardGrid([
         { name: 'Gesetzliche Gebühren nach RVG', line: 'Die Gebühren richten sich nach dem Gegenstandswert und den Tätigkeiten, die das Rechtsanwaltsvergütungsgesetz vorsieht.' },
         { name: 'Stundenhonorar', line: 'Abgerechnet wird der tatsächliche Zeitaufwand zu einem vorher vereinbarten Stundensatz.' },
         { name: 'Pauschalvergütung', line: 'Für ein klar umrissenes Mandat wird ein fester Betrag vereinbart.' },
-      ]),
+      ], { icons: ['file', 'clock', 'tag'], cols: 3 }),
     }),
     faqSplit({
       id: 'fragen', h2: 'Fragen zu den Kosten',
@@ -282,7 +285,7 @@ export function pages() {
       lead: `${ADDRESS}. Rufen Sie an, schreiben Sie eine E-Mail oder senden Sie Ihre Anfrage über das Formular.`,
       buttons: [{ href: '#anfrage', label: 'Erstgespräch vereinbaren' }, { href: PHONE.href, label: `${PHONE.label} anrufen` }],
     },
-    close: { h2: 'Lieber direkt anrufen', line: `Telefon ${PHONE.label}, Fax ${FAX}.`, photo: 'shelves', pos: '45% 50%' },
+    close: { h2: 'Lieber direkt anrufen', line: `Telefon ${PHONE.label}, Fax ${FAX}.` },
   });
   kontakt.sections = [
     `  <section class="section" id="anfrage" style="--hm: 2" aria-labelledby="anfrage-h">
