@@ -44,14 +44,14 @@
 }
 </style>
 <link rel="stylesheet" href="../assets/site.css">
-<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver'in window)document.documentElement.classList.add('rv');document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
 <script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
 <link rel="modulepreload" href="../assets/moments/moments.js"><link rel="modulepreload" href="../assets/moments/lib.js">
 <link rel="modulepreload" href="../assets/moments/word-highlight/moment.js">
 </head>
 <body>
 <!-- type: service (Kanzlei, site-kind other)
-     deal: hero film (no film: the poster is a stand-in photograph, no play control), nav nav-split, close close-photo,
+     deal: hero film (no film: the poster is a stand-in photograph, no play control), nav nav-split, close close-panel (no photograph),
      footer footer-columns, rhythm space, buttons tonal, mark stack, palette oxblood-grey, type instrument-serif
      moments: word-highlight
      Built by src/build.mjs: edit the content in src/content/*.mjs and run "node src/build.mjs". -->
@@ -115,22 +115,38 @@
     </div></div>
   </section>
 
-  <section class="section" id="migrationsrecht" style=" --hm: 2" aria-labelledby="migrationsrecht-h">
-    <div class="wrap grid grid--top split">
-      <div class="span-5 split__text">
+  <section class="section section--ui" id="migrationsrecht" aria-labelledby="migrationsrecht-h">
+    <div class="wrap grid grid--top ui-split">
+      <div class="span-4 ui-split__head">
         <div class="section-head">
           <h2 id="migrationsrecht-h">Ausländer- und Asylrecht</h2>
           <p>Dr. Ertunc trägt den Titel Fachanwalt für Migrationsrecht. Die Kanzlei berät und vertritt Sie unter anderem bei diesen Fragen:</p>
         </div>
-        <ul class="rows">
-            <li><span class="rows__name">Aufenthalt</span><p>Aufenthaltserlaubnis, Niederlassungserlaubnis, Verlängerung und Daueraufenthalt.</p></li>
-            <li><span class="rows__name">Einbürgerung</span><p>Antrag, Voraussetzungen und Rechtsmittel bei Ablehnung.</p></li>
-            <li><span class="rows__name">Familiennachzug und Visum</span><p>Nachzug von Ehepartnern und Kindern, Visumverfahren.</p></li>
-            <li><span class="rows__name">Asylverfahren</span><p>Anhörung, Bescheid und Klage vor dem Verwaltungsgericht.</p></li>
-            <li><span class="rows__name">Ausweisung und Abschiebung</span><p>Eilrechtsschutz und Vertretung gegenüber der Ausländerbehörde.</p></li>
+      </div>
+      <div class="span-8 start-5 ui-split__body">
+        <ul class="cards cards--2" data-reveal>
+            <li class="card-item">
+              <span class="card-item__icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2"/><circle cx="9" cy="11" r="2.2"/><path d="M5.8 16c.6-1.4 1.7-2 3.2-2s2.6.6 3.2 2"/><path d="M15 10h3.5M15 13.5h3.5"/></svg></span>
+              <div class="card-item__body"><h3 class="card-item__name">Aufenthalt</h3><p>Aufenthaltserlaubnis, Niederlassungserlaubnis, Verlängerung und Daueraufenthalt.</p></div>
+            </li>
+            <li class="card-item">
+              <span class="card-item__icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5.5 17.5v-7M10 17.5v-7M14 17.5v-7M18.5 17.5v-7"/><path d="M12 3 21 8H3z"/></svg></span>
+              <div class="card-item__body"><h3 class="card-item__name">Einbürgerung</h3><p>Antrag, Voraussetzungen und Rechtsmittel bei Ablehnung.</p></div>
+            </li>
+            <li class="card-item">
+              <span class="card-item__icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m21.5 2.5-6.5 19-4-8.5-8.5-4z"/><path d="M21.5 2.5 11 13"/></svg></span>
+              <div class="card-item__body"><h3 class="card-item__name">Familiennachzug und Visum</h3><p>Nachzug von Ehepartnern und Kindern, Visumverfahren.</p></div>
+            </li>
+            <li class="card-item">
+              <span class="card-item__icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.5s8-3.8 8-9.8V5.2L12 2.5 4 5.2v6.5c0 6 8 9.8 8 9.8z"/><path d="m8.8 12 2.2 2.2 4.2-4.4"/></svg></span>
+              <div class="card-item__body"><h3 class="card-item__name">Asylverfahren</h3><p>Anhörung, Bescheid und Klage vor dem Verwaltungsgericht.</p></div>
+            </li>
+            <li class="card-item">
+              <span class="card-item__icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.9 18a2 2 0 0 0 1.7 3h16.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span>
+              <div class="card-item__body"><h3 class="card-item__name">Ausweisung und Abschiebung</h3><p>Eilrechtsschutz und Vertretung gegenüber der Ausländerbehörde.</p></div>
+            </li>
           </ul>
       </div>
-      <div class="frame frame--photo split__media span-6 start-7"><img class="frame__img" src="../assets/img/photo-f130916005-1024.webp" srcset="../assets/img/photo-f130916005-640.webp 640w, ../assets/img/photo-f130916005-1024.webp 1024w, ../assets/img/photo-f130916005-1600.webp 1600w, ../assets/img/photo-f130916005-2400.webp 2400w" sizes="(max-width: 639px) 800px, (max-width: 1023px) 1200px, 1060px" width="1024" height="683" alt="Der Justizpalast in München mit Brunnen im Vordergrund" loading="lazy" decoding="async" style="--pos: 50% 55%; object-position: 50% 55%" data-source="stand-in" data-subject="Palace of Justice, Munich"></div>
     </div>
   </section>
 
@@ -141,21 +157,34 @@
     </div>
   </section>
 
-  <section class="section" id="weitere" style=" --hm: 2" aria-labelledby="weitere-h">
-    <div class="wrap grid grid--top split">
-      <div class="span-5 split__text">
+  <section class="section section--ui" id="weitere" aria-labelledby="weitere-h">
+    <div class="wrap grid grid--top ui-split">
+      <div class="span-4 ui-split__head">
         <div class="section-head">
           <h2 id="weitere-h">Familien-, Arbeits-, Straf- und Verkehrsrecht</h2>
           <p>Beratung und Vertretung außergerichtlich und vor Gericht.</p>
         </div>
-        <ul class="rows">
-            <li id="familienrecht"><span class="rows__name">Familienrecht</span><p>Trennung und Scheidung, Kindes- und Ehegattenunterhalt, Sorge- und Umgangsrecht, Zugewinnausgleich.</p></li>
-            <li id="arbeitsrecht"><span class="rows__name">Arbeitsrecht</span><p>Kündigungsschutzklage, Abfindung, Arbeitsvertrag und Arbeitszeugnis, für Arbeitnehmer und Arbeitgeber.</p></li>
-            <li id="strafrecht"><span class="rows__name">Strafrecht</span><p>Verteidigung im Ermittlungsverfahren, bei Strafbefehl und in der Hauptverhandlung.</p></li>
-            <li id="verkehrsrecht"><span class="rows__name">Verkehrsrecht</span><p>Unfallregulierung, Bußgeldverfahren, Fahrverbot und Führerschein.</p></li>
+      </div>
+      <div class="span-8 start-5 ui-split__body">
+        <ul class="cards cards--2" data-reveal>
+            <li class="card-item" id="familienrecht">
+              <span class="card-item__icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20v-1.5a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4V20"/><circle cx="9" cy="7" r="3.5"/><path d="M22 20v-1.5a4 4 0 0 0-3-3.85"/><path d="M15.5 3.6a3.5 3.5 0 0 1 0 6.8"/></svg></span>
+              <div class="card-item__body"><h3 class="card-item__name">Familienrecht</h3><p>Trennung und Scheidung, Kindes- und Ehegattenunterhalt, Sorge- und Umgangsrecht, Zugewinnausgleich.</p></div>
+            </li>
+            <li class="card-item" id="arbeitsrecht">
+              <span class="card-item__icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="7" width="19" height="13" rx="2"/><path d="M8.5 7V5a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v2"/><path d="M2.5 12.5h19"/></svg></span>
+              <div class="card-item__body"><h3 class="card-item__name">Arbeitsrecht</h3><p>Kündigungsschutzklage, Abfindung, Arbeitsvertrag und Arbeitszeugnis, für Arbeitnehmer und Arbeitgeber.</p></div>
+            </li>
+            <li class="card-item" id="strafrecht">
+              <span class="card-item__icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m14 13-7.5 7.5a2.12 2.12 0 0 1-3-3L11 10"/><path d="m16 16 6-6"/><path d="m8 8 6-6"/><path d="m9 7 8 8"/><path d="m21 11-8-8"/></svg></span>
+              <div class="card-item__body"><h3 class="card-item__name">Strafrecht</h3><p>Verteidigung im Ermittlungsverfahren, bei Strafbefehl und in der Hauptverhandlung.</p></div>
+            </li>
+            <li class="card-item" id="verkehrsrecht">
+              <span class="card-item__icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16.5V12l2.3-5h11.4L20 12v4.5z"/><path d="M4 12h16"/><circle cx="7.5" cy="16.5" r="1.8"/><circle cx="16.5" cy="16.5" r="1.8"/></svg></span>
+              <div class="card-item__body"><h3 class="card-item__name">Verkehrsrecht</h3><p>Unfallregulierung, Bußgeldverfahren, Fahrverbot und Führerschein.</p></div>
+            </li>
           </ul>
       </div>
-      <div class="frame frame--photo split__media span-6 start-7"><img class="frame__img" src="../assets/img/photo-f83119900-1024.webp" srcset="../assets/img/photo-f83119900-640.webp 640w, ../assets/img/photo-f83119900-1024.webp 1024w, ../assets/img/photo-f83119900-1600.webp 1600w" sizes="(max-width: 639px) 800px, (max-width: 1023px) 1200px, 1060px" width="1024" height="731" alt="Ledergebundene Aktenbände in einem Regal" loading="lazy" decoding="async" style="--pos: 50% 50%; object-position: 50% 50%" data-source="stand-in" data-subject="leather-bound case files"></div>
     </div>
   </section>
 
@@ -163,12 +192,13 @@
 
 <footer class="footer closing" id="contact" aria-labelledby="close-h">
   <div class="wrap">
-    <div class="closing__cta close--photo">
-      <div class="section-head--split">
-        <div><h2 id="close-h">Ihr Anliegen mit der Kanzlei besprechen</h2><p class="t-lead">Adlzreiterstraße 2, 83022 Rosenheim. Telefon 08031 209 24 48.</p></div>
+    <div class="closing__cta close--panel ground-inverse">
+      <div class="close-panel__words"><h2 id="close-h">Ihr Anliegen mit der Kanzlei besprechen</h2><p class="t-lead">Adlzreiterstraße 2, 83022 Rosenheim. Telefon 08031 209 24 48.</p></div>
+      <div class="close-panel__actions">
         <a class="btn btn--primary" href="../kontakt/#anfrage">Erstgespräch vereinbaren<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+        <a class="close-panel__chip" href="tel:+4980312092448"><svg class="ico ico--sm" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 16.6v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 1.6 3.8 2 2 0 0 1 3.6 1.6h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.5 9.5a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2.2z"/></svg>08031 209 24 48</a>
+        <a class="close-panel__chip" href="mailto:info@rechtsanwalt-ertunc.com"><svg class="ico ico--sm" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m21.5 7-9.5 6L2.5 7"/></svg>info@rechtsanwalt-ertunc.com</a>
       </div>
-      <div class="close__media"><img src="../assets/img/photo-f177063630-1024.webp" srcset="../assets/img/photo-f177063630-640.webp 640w, ../assets/img/photo-f177063630-1024.webp 1024w, ../assets/img/photo-f177063630-1600.webp 1600w, ../assets/img/photo-f177063630-2400.webp 2400w" sizes="(max-width: 639px) 600px, (max-width: 1440px) calc(100vw - 48px), 1280px" width="1024" height="1024" alt="Der Ludwigsplatz in Rosenheim am Morgen" loading="lazy" decoding="async" style="--pos: 50% 62%; object-position: 50% 62%" data-source="stand-in" data-subject="Ludwigsplatz, Rosenheim"></div>
     </div>
     <div class="closing__links">
       <div class="grid">
@@ -195,5 +225,6 @@
 <script type="module" src="../assets/system.js"></script>
 <script type="module" src="../assets/motion/motion.js"></script>
 <script type="module" src="../assets/layout/layout.js"></script>
+<script type="module" src="../assets/site.js"></script>
 </body>
 </html>

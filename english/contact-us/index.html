@@ -44,14 +44,14 @@
 }
 </style>
 <link rel="stylesheet" href="../../assets/site.css">
-<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver'in window)document.documentElement.classList.add('rv');document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
 <script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
 <link rel="modulepreload" href="../../assets/moments/moments.js"><link rel="modulepreload" href="../../assets/moments/lib.js">
 <link rel="modulepreload" href="../../assets/moments/picture-develops/moment.js">
 </head>
 <body>
 <!-- type: service (Kanzlei, site-kind other)
-     deal: hero film (no film: the poster is a stand-in photograph, no play control), nav nav-split, close close-photo,
+     deal: hero film (no film: the poster is a stand-in photograph, no play control), nav nav-split, close close-panel (no photograph),
      footer footer-columns, rhythm space, buttons tonal, mark stack, palette oxblood-grey, type instrument-serif
      moments: picture-develops
      Built by src/build.mjs: edit the content in src/content/*.mjs and run "node src/build.mjs". -->
@@ -173,12 +173,13 @@
 
 <footer class="footer closing" id="contact" aria-labelledby="close-h">
   <div class="wrap">
-    <div class="closing__cta close--photo">
-      <div class="section-head--split">
-        <div><h2 id="close-h">Prefer to call directly</h2><p class="t-lead">Phone +49 8031 209 24 48, fax +49 8031 232 88 49.</p></div>
+    <div class="closing__cta close--panel ground-inverse">
+      <div class="close-panel__words"><h2 id="close-h">Prefer to call directly</h2><p class="t-lead">Phone +49 8031 209 24 48, fax +49 8031 232 88 49.</p></div>
+      <div class="close-panel__actions">
         <a class="btn btn--primary" href="../../english/contact-us/#request">Book a first consultation<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+        <a class="close-panel__chip" href="tel:+4980312092448"><svg class="ico ico--sm" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 16.6v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 1.6 3.8 2 2 0 0 1 3.6 1.6h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L7.5 9.5a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2.2z"/></svg>+49 8031 209 24 48</a>
+        <a class="close-panel__chip" href="mailto:info@rechtsanwalt-ertunc.com"><svg class="ico ico--sm" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m21.5 7-9.5 6L2.5 7"/></svg>info@rechtsanwalt-ertunc.com</a>
       </div>
-      <div class="close__media"><img src="../../assets/img/photo-f201613328-1024.webp" srcset="../../assets/img/photo-f201613328-640.webp 640w, ../../assets/img/photo-f201613328-1024.webp 1024w, ../../assets/img/photo-f201613328-1600.webp 1600w, ../../assets/img/photo-f201613328-2400.webp 2400w" sizes="(max-width: 639px) 600px, (max-width: 1440px) calc(100vw - 48px), 1280px" width="1024" height="683" alt="Law reports and statute volumes on a bookshelf" loading="lazy" decoding="async" style="--pos: 45% 50%; object-position: 45% 50%" data-source="stand-in" data-subject="law reports on a bookshelf"></div>
     </div>
     <div class="closing__links">
       <div class="grid">
@@ -205,5 +206,6 @@
 <script type="module" src="../../assets/system.js"></script>
 <script type="module" src="../../assets/motion/motion.js"></script>
 <script type="module" src="../../assets/layout/layout.js"></script>
+<script type="module" src="../../assets/site.js"></script>
 </body>
 </html>
