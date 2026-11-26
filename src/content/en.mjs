@@ -41,7 +41,7 @@ export const T = {
   footer: {
     lede: 'Lawyer and certified specialist in migration law in Rosenheim',
     firm: 'Rechtsanwaltskanzlei Dr. Ertunc',
-    imprint: 'Legal notice (Impressum)', privacy: 'Privacy (Datenschutz)',
+    imprint: 'Legal notice', privacy: 'Privacy',
     credits: 'Photographs via Wikimedia Commons',
     cols: [
       { head: 'Practice', links: [{ href: LAWYER, label: 'Lawyer' }, { href: BASE + '#fees', label: 'Fees' }, { href: CONTACT, label: 'Contact' }] },
@@ -89,7 +89,7 @@ export function pages() {
   home.sections = [
     split(home, {
       id: 'areas', photo: 'shelves', pos: '45% 80%',
-      h2: 'Practice areas of the firm',
+      h2: 'Legal services of the firm',
       lead: 'The focus is immigration and asylum law. Private clients and companies are also advised and represented in four further areas.',
       body: rows([
         { name: 'Immigration and asylum law', line: 'Residence permits, naturalisation, family reunification, asylum and appeals against decisions.', value: 'Specialist' },
@@ -105,27 +105,27 @@ export function pages() {
       after: LANGROW,
     }),
     chapters(home, {
-      id: 'process', h2: 'How your case proceeds',
+      id: 'process', h2: 'How the process works',
       steps: [
         { title: 'First contact, free of charge', photo: 'penwood', text: 'You describe your matter by phone, by email or at the office. You learn how the procedure works and what it is likely to cost.' },
-        { title: 'Review of your documents', photo: 'volumes', text: 'Decisions, contracts and letters are reviewed. You receive an assessment of your position and a proposal for the next steps.' },
-        { title: 'Representation before authorities and courts', photo: 'justiz', text: 'The firm handles correspondence with authorities, opponents and insurers and represents you in court.' },
+        { title: 'The lawyer reviews your documents', photo: 'volumes', text: 'Decisions, contracts and letters are reviewed. You receive an assessment of your position and a proposal for the next steps.' },
+        { title: 'Your lawyer at the immigration office and in court', photo: 'justiz', text: 'The firm handles correspondence with authorities, opponents and insurers and represents you in court.' },
       ],
     }),
     split(home, {
       id: 'lawyer', photo: 'harvard', pos: '50% 50%',
       h2: 'Dr. Kenan Ertunc M.A.',
-      lead: 'German lawyer (Rechtsanwalt) and certified specialist in migration law, member of the Munich Bar and the German Bar Association.',
+      lead: 'Certified specialist in migration law and member of the Munich Bar.',
       body: rows([
         { name: 'Studies', line: 'Law, labour studies and European studies in Bremen, Saarbrücken and Milan.' },
         { name: 'Doctorate', line: 'Graduate School for Social and Political Science, University of Milan.' },
         { name: 'Research', line: 'Visiting researcher at Warwick Business School and the University of Cambridge.' },
-        { name: 'Practice', line: 'In-house counsel and lawyer at an international business law firm in Munich.' },
-      ]) + `\n        <p class="split__more"><a class="link" href="${home.p}${LAWYER}">Read the career and publications</a></p>`,
+        { name: 'Practice', line: 'Lawyer at an international business law firm in Munich.' },
+      ]) + `\n        <p class="split__more"><a class="link" href="${home.p}${LAWYER}">Read the full career</a></p>`,
     }),
     fees(home, {
       id: 'fees', photo: 'intl', pos: '50% 45%',
-      h2: 'Fees and billing',
+      h2: 'Prices and billing',
       lead: 'The first contact is free of charge. How the work is billed is agreed before the mandate begins.',
       link: { href: CONTACT + '#request', label: 'Write to discuss the costs' },
       items: [

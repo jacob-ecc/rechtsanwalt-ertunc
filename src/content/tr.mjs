@@ -41,7 +41,7 @@ export const T = {
   footer: {
     lede: 'Rosenheim’da avukat ve göç hukuku uzman avukatı',
     firm: 'Rechtsanwaltskanzlei Dr. Ertunc',
-    imprint: 'Künye (Impressum)', privacy: 'Gizlilik (Datenschutz)',
+    imprint: 'Künye', privacy: 'Gizlilik',
     credits: 'Fotoğraflar: Wikimedia Commons',
     cols: [
       { head: 'Büro', links: [{ href: LAWYER, label: 'Avukat' }, { href: BASE + '#ucretler', label: 'Ücretler' }, { href: CONTACT, label: 'İletişim' }] },
@@ -115,13 +115,13 @@ export function pages() {
     split(home, {
       id: 'avukat', photo: 'harvard', pos: '50% 50%',
       h2: 'Dr. Kenan Ertunc M.A.',
-      lead: 'Avukat ve göç hukuku uzman avukatı; Münih Barosu (Rechtsanwaltskammer München) ve Alman Avukatlar Birliği (DAV) üyesi.',
+      lead: 'Göç hukuku uzman avukatı ve Münih Barosu üyesi.',
       body: rows([
         { name: 'Eğitim', line: 'Bremen, Saarbrücken ve Milano’da hukuk, çalışma bilimi ve Avrupa çalışmaları.' },
         { name: 'Doktora', line: 'Milano Üniversitesi, Graduate School for Social and Political Science.' },
         { name: 'Araştırma', line: 'Warwick Business School ve Cambridge Üniversitesi’nde misafir araştırmacı.' },
-        { name: 'Meslek', line: 'Münih’te uluslararası bir hukuk bürosunda avukat ve şirket hukuk müşaviri.' },
-      ]) + `\n        <p class="split__more"><a class="link" href="${home.p}${LAWYER}">Özgeçmişi ve yayınları okuyun</a></p>`,
+        { name: 'Meslek', line: 'Münih’te uluslararası bir hukuk bürosunda avukatlık.' },
+      ]) + `\n        <p class="split__more"><a class="link" href="${home.p}${LAWYER}">Özgeçmişin tamamını okuyun</a></p>`,
     }),
     fees(home, {
       id: 'ucretler', photo: 'intl', pos: '50% 45%',

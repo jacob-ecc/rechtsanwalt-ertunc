@@ -230,7 +230,7 @@ export function fees(pg, s) {
         <div><h2 id="${s.id}-h">${s.h2}</h2><p class="t-lead">${s.lead}</p></div>
       </div>
       <div class="grid fees">
-${s.items.map(it => `        <div class="span-4 fee"><p class="fee__value">${it.value}</p><h3>${it.name}</h3><p>${it.line}</p></div>`).join('\n')}
+${s.items.map(it => `        <div class="span-4 fee"><p class="fee__value">${it.value}</p><p class="fee__name">${it.name}</p><p>${it.line}</p></div>`).join('\n')}
       </div>
       <div class="wide-photo">${photo(p, s.photo, pg.lang, { cls: '', sizes: '(max-width: 1440px) calc(100vw - 48px), 1280px', pos: s.pos })}</div>
       ${s.link ? `<p class="split__more"><a class="link" href="${p}${s.link.href}">${s.link.label}</a></p>` : ''}
