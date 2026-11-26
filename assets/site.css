@@ -1,0 +1,106 @@
+/* The site's own page CSS: only what sits inside a visual or a block the kit lacks.
+   Tokens, grid, type, buttons and sections come from assets/system.css and assets/layout/layout.css. */
+
+/* language switch beside the main button */
+.nav__langs { display: inline-flex; align-items: center; gap: 0; margin-right: var(--s-3); }
+.nav__langs .nav__lang { min-width: 44px; min-height: 44px; justify-content: center; padding-inline: var(--s-2); font-size: var(--t-small); }
+
+/* from 1024 the languages sit beside the button; below, they are rows in the menu sheet */
+@media (min-width: 1024px) { .nav__item--lang { display: none !important; } }
+@media (max-width: 1023px) { .nav__langs { display: none !important; } }
+
+/* the languages under the statement, each in its own language */
+.lang-row { list-style: none; padding: 0; margin: var(--s-8) 0 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-5); }
+.lang-row li { padding-top: var(--s-5); font: var(--display-weight) var(--t-h3)/1.2 var(--font-display); letter-spacing: var(--display-tracking); }
+.lang-row li small { display: block; margin-top: var(--s-2); font: 400 var(--t-small)/1.4 var(--font-text); letter-spacing: 0; color: var(--muted); }
+@media (max-width: 639px) { .lang-row { grid-template-columns: 1fr 1fr; margin-top: var(--s-7); } }
+
+/* splits: the photograph runs as tall as the words beside it */
+.split__media { align-self: stretch; min-height: 420px; }
+.split__more { margin-top: var(--s-5); }
+.split__more + .rows { margin-top: var(--s-7); }
+.statement .lang-row small { max-width: 28ch; }
+.develop { margin: 0; border-radius: var(--r-lg); overflow: hidden; align-self: stretch; min-height: 420px; }
+.develop > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 639px) {
+  .split__media, .develop { min-height: 0; aspect-ratio: 2 / 3; margin-top: var(--s-6); }
+}
+
+/* the tablet held upright: a split stacks, so it takes two screens and a square photograph */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .split > .split__text { grid-column: 1 / span 7; }
+  .split > :is(.split__media, .develop) { grid-column: 8 / span 5; aspect-ratio: auto; margin-top: 0; min-height: 0; align-self: stretch; }
+  /* the mandate's steps rest as rows there: flatter photographs keep them on one screen */
+  [data-moment="pinned-chapters"] .mo-pc__visual img { aspect-ratio: 2 / 1; height: auto; object-fit: cover; }
+  /* the film hero's box keeps to the words' width instead of a band across the frame */
+  .hero--film .hero__over > :first-child { max-width: 560px; justify-self: start; }
+}
+
+/* the mandate's steps at rest: flatter pictures on a tablet, two whole screens on a phone */
+@media (min-width: 640px) and (max-width: 1023px) {
+  html main [data-moment="pinned-chapters"]:not(.is-live) .mo-pc__visual > img { max-height: 18svh; }
+  .wide-photo { height: 200px; }
+}
+@media (max-width: 639px) {
+  html body main > [data-moment="pinned-chapters"][data-moment]:not(.is-live) { min-height: calc(2 * 100lvh); }
+}
+
+/* fees: three ways of billing side by side, a wide photograph under them */
+.fees { margin-top: var(--s-7); }
+.fee { padding-top: var(--s-5); border-top: 1px solid var(--line); }
+.fee__value { font: var(--display-weight) var(--t-h3)/1.1 var(--font-display); letter-spacing: var(--display-tracking); margin: 0 0 var(--s-4); }
+.fee p { hyphens: auto; overflow-wrap: break-word; }
+.fee h3 { font: 500 var(--t-lead)/1.3 var(--font-text); letter-spacing: 0; margin: 0 0 var(--s-2); }
+.wide-photo { position: relative; margin-top: var(--s-7); height: clamp(220px, 28svh, 300px); border-radius: var(--r-lg); overflow: hidden; }
+.wide-photo > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+@media (min-width: 640px) and (max-width: 1023px) { .fees > .fee { grid-column: span 4; } }
+@media (max-width: 639px) { .fees > .fee { grid-column: span 12; } .fee + .fee { margin-top: var(--s-2); } .split__more .link { display: flex; width: 100%; } }
+
+/* rows that hold a link as their name */
+.rows__name .link { font-weight: 500; }
+
+/* contact */
+.contact-address { font: 400 var(--t-h3)/1.2 var(--font-display); font-style: normal; letter-spacing: var(--display-tracking); margin-top: var(--s-2); }
+.contact-rows { margin-top: var(--s-6); }
+.form-panel { background: var(--g-alt, var(--surface)); border-radius: var(--r-lg); padding: var(--s-7); }
+.form .btn-row { margin-top: var(--s-3); }
+@media (max-width: 639px) {
+  .form-panel { padding: var(--s-5); margin-top: var(--s-6); }
+  .form { grid-template-columns: 1fr; }
+}
+
+/* legal pages (Impressum, Datenschutz): long text, so they leave the screen grid */
+main.legal { padding-top: calc(var(--nav) + var(--s-8)); padding-bottom: var(--s-9); }
+main.legal > article { width: min(100% - 2 * var(--gut), 1280px); margin-inline: auto; }
+.legal h1 { font: var(--display-weight) var(--t-h2)/1.1 var(--font-display); letter-spacing: var(--display-tracking); margin: 0 0 var(--s-7); }
+.legal h2 { font: var(--display-weight) var(--t-h3)/1.2 var(--font-display); margin: var(--s-8) 0 var(--s-4); }
+.legal h3 { font: 500 var(--t-lead)/1.4 var(--font-text); margin: var(--s-6) 0 var(--s-3); }
+.legal p, .legal li, .legal address { max-width: 68ch; line-height: 1.7; font-style: normal; }
+.legal p + p { margin-top: var(--s-4); }
+.legal ul { padding-left: 1.2em; }
+.legal a { color: var(--action); text-decoration: underline; text-underline-offset: 3px; }
+
+/* a phone keeps the footer to its two screens: the areas of law stay one tap away in the menu */
+@media (max-width: 1023px) { .footer__col--wide { display: none; } }
+
+/* the tablet footer: three link columns across the row, a lower photograph in the close */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .closing__links .grid > .footer__col { grid-column: auto / span 4; }
+  footer.closing .closing__cta > .close__media { min-height: 112px; }
+}
+@media (max-width: 639px) { .footer__col--nophone { display: none; } }
+
+/* a split whose words are short stacks on the tablet too, the photograph wide under the words */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .stack-tab .split > .split__text, .stack-tab .split > :is(.split__media, .develop) { grid-column: 1 / -1; }
+  .stack-tab .split > :is(.split__media, .develop) { aspect-ratio: 16 / 10; margin-top: var(--s-6); }
+}
+/* a long list on a phone keeps its photograph low */
+@media (max-width: 639px) { .ph-short .split > :is(.split__media, .develop) { aspect-ratio: 4 / 3; } }
+/* contact values may wrap on a phone */
+.contact-rows .rows__value { white-space: normal; overflow-wrap: anywhere; }
+.lang-row--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 639px) { .lang-row--3 { grid-template-columns: 1fr; } }
+.legal-footer { padding: 0 0 calc(var(--s-6) + var(--bar, 0px)); }
+/* 1024 to 1279: a smaller name in the middle, so the bar's thirds keep their air */
+@media (min-width: 1024px) and (max-width: 1279px) { .nav--split .nav__logo { font-size: 21px; } .nav--split .nav__logo .mark { width: 18px; height: 18px; } }
